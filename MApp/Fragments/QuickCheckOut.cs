@@ -33,11 +33,6 @@ namespace MApp.Fragments
             };
         }
 
-        public void TakeInt(int value)
-        {
-            passedInt = value;
-        }
-
         public void buttonCheckOut(View v)
         {
             CoutInterface.buttonCheckOut(v);

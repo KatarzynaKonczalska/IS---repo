@@ -23,7 +23,7 @@ namespace MApp.Activities
     [IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
         DataMimeType = ViewApeMimeType,
         Categories = new[] { "android.intent.category.DEFAULT" })]
-    public class Content : AppCompatActivity, CheckOutInterface
+    public class Content : AppCompatActivity, CheckOutInterface, CheckInInterface
     {
         #region Fields
         DrawerLayout drawerLayout;
@@ -84,7 +84,6 @@ namespace MApp.Activities
         {
             base.OnNewIntent(intent);
             handlingIntent(intent);
-            Log.Debug(Tag, "wchodzi");
         }
 
         private void handlingIntent(Intent intent)
@@ -260,16 +259,15 @@ namespace MApp.Activities
                     ft.Commit();
                     break;
                 case (Resource.Id.nav_messages):
-                    //var nowy = new Fragments.SektorDetails();
                     var fragment2 = new Fragments.QuickCheckIn();
-                    fragment2.TakeInt(Int32.MaxValue);
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment2, "nfc_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
+                    //tworzymy interfejs z fragmentem CheckIn
+                    fragment2.setInterface2(this);
                     break;
                 case (Resource.Id.nav_friends):
                     var fragment = new Fragments.QuickCheckOut();
-                    fragment.TakeInt(Int32.MaxValue);
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment, "CheckOut");
                     ft.AddToBackStack(null);
                     ft.Commit();
@@ -346,8 +344,6 @@ namespace MApp.Activities
         {
             _inClearMode = true;
             EnableWriteMode();
-            //Toast.MakeText(this, "button dzial, woow", ToastLength.Short).Show();
         }
-        //lalallalalalallallala
     }
 }
