@@ -1,0 +1,107 @@
+﻿{
+  "0": {
+    "IdRegalu": 1,
+    "MaxPoj": 150,
+    "AktZap": 42,
+    "Produkty": {
+      "1": {
+        "IdProduktu": 7,
+        "Nazwa": "śruba",
+        "Gwint": "prawy",
+        "Grubosc": "10mm",
+        "Ilosc": 356,
+        "MaxIlosc": 500
+      },
+      "2": {
+        "IdProduktu": 8,
+        "Nazwa": "klucz nasadowy",
+        "Wielkosc": "15mm",
+        "Ilosc": 15,
+        "MaxIlosc": 35
+      },
+      "3": {
+        "IdProduktu": 9,
+        "Nazwa": "śrubokręt krzyżowy",
+        "Materiały": "plastik, metal, magnes",
+        "Wielkosc": "średni",
+        "Ilosc": 83,
+        "MaxIlosc": 100
+      },
+      "4": {
+        "IdProduktu": 10,
+        "Nazwa": "śrubokręt płaski",
+        "Materiały": "guma, metal, magnes",
+        "Wielkosc": "średni",
+        "Ilosc": 47,
+        "MaxIlosc": 100
+      },
+      "5": {
+        "IdProduktu": 11,
+        "Nazwa": "bit",
+        "Typ": "płaski",
+        "Ilosc": 220,
+        "MaxIlosc": 220
+      },
+      "6": {
+        "IdProduktu": 12,
+        "Nazwa": "bit",
+        "Typ": "krzyżowy",
+        "Ilosc": 219,
+        "MaxIlosc": 220
+      }
+    }
+  },
+  "1": {
+    "IdRegalu": 1,
+    "MaxPoj": 150,
+    "AktZap": 42,
+    "Produkty": {
+      "1": {
+        "IdProduktu": 7,
+        "Nazwa": "śruba",
+        "Gwint": "prawy",
+        "Grubosc": "10mm",
+        "Ilosc": 356,
+        "MaxIlosc": 500
+      },
+      "2": {
+        "IdProduktu": 8,
+        "Nazwa": "klucz nasadowy",
+        "Wielkosc": "15mm",
+        "Ilosc": 15,
+        "MaxIlosc": 35
+      },
+      "3": {
+        "IdProduktu": 9,
+        "Nazwa": "śrubokręt krzyżowy",
+        "Materiały": "plastik, metal, magnes",
+        "Wielkosc": "średni",
+        "Ilosc": 83,
+        "MaxIlosc": 100
+      },
+      "4": {
+        "IdProduktu": 10,
+        "Nazwa": "śrubokręt płaski",
+        "Materiały": "guma, metal, magnes",
+        "Wielkosc": "średni",
+        "Ilosc": 47,
+        "MaxIlosc": 100
+      },
+      "5": {
+        "IdProduktu": 11,
+        "Nazwa": "bit",
+        "Typ": "płaski",
+        "Ilosc": 220,
+        "MaxIlosc": 220
+      },
+      "6": {
+        "IdProduktu": 12,
+        "Nazwa": "bit",
+        "Typ": "krzyżowy",
+        "Ilosc": 219,
+        "MaxIlosc": 220
+      }
+    }
+  }
+
+}

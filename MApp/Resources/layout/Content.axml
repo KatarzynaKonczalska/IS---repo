@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1"
+    p1:background="@drawable/tlo">
+  <RelativeLayout
+      p1:minWidth="25px"
+      p1:minHeight="25px"
+      p1:layout_width="match_parent"
+      p1:layout_height="250dip"
+      p1:id="@+id/relativeLayout1"
+      p1:layout_marginTop="30dip"
+      p1:background="@drawable/background_relative"
+      p1:layout_marginBottom="20dip"
+      p1:layout_marginLeft="50dip"
+      p1:layout_marginRight="50dip">
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton1"
+        p1:background="#2d7eff"
+        p1:layout_marginTop="35dip"
+        p1:layout_marginLeft="15dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton2"
+        p1:background="#2d7eff"
+        p1:layout_marginTop="35dip"
+        p1:layout_marginLeft="50dip"
+        p1:minWidth="30dip"
+        p1:minHeight="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton3"
+        p1:background="#2d7eff"
+        p1:layout_marginLeft="15dip"
+        p1:layout_marginTop="70dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton4"
+        p1:background="#2d7eff"
+        p1:layout_marginLeft="50dip"
+        p1:layout_marginTop="70dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton5"
+        p1:background="#2d7eff"
+        p1:layout_marginTop="140dip"
+        p1:layout_marginLeft="15dip"
+        p1:minWidth="30dip"
+        p1:minHeight="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton6"
+        p1:background="#2d7eff"
+        p1:layout_marginLeft="15dip"
+        p1:layout_marginTop="105dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton7"
+        p1:background="#2d7eff"
+        p1:layout_marginTop="105dip"
+        p1:layout_marginLeft="50dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton8"
+        p1:layout_marginLeft="15dip"
+        p1:layout_marginTop="175dip"
+        p1:background="#2d7eff"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton9"
+        p1:background="#2d7eff"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip"
+        p1:layout_marginTop="35dip"
+        p1:layout_marginLeft="240dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton10"
+        p1:background="#2d7eff"
+        p1:layout_marginLeft="200dip"
+        p1:layout_marginTop="35dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton11"
+        p1:minWidth="30dip"
+        p1:minHeight="30dip"
+        p1:layout_marginLeft="240dip"
+        p1:layout_marginTop="70dip"
+        p1:background="#2d7eff" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton12"
+        p1:background="#2d7eff"
+        p1:minHeight="30dip"
+        p1:layout_marginLeft="200dip"
+        p1:layout_marginTop="70dip"
+        p1:minWidth="30dip" />
+    <ImageButton
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/imageButton13"
+        p1:background="#2d7eff"
+        p1:layout_marginLeft="240dip"
+        p1:layout_marginTop="105dip"
+        p1:minHeight="30dip"
+        p1:minWidth="30dip" />
+    <TextView
+        p1:text=" ul. Szosa Lubicka 5"
+        p1:textAppearance="?android:attr/textAppearanceSmall"
+        p1:id="@+id/textView1"
+        p1:layout_width="match_parent"
+        p1:background="#2d7eff"
+        p1:layout_height="wrap_content"
+        p1:textSize="30px" />
+  </RelativeLayout>
+  <RelativeLayout
+      p1:minWidth="25px"
+      p1:minHeight="250px"
+      p1:layout_width="match_parent"
+      p1:id="@+id/relativeLayout2"
+      p1:layout_marginLeft="50dip"
+      p1:layout_marginRight="50dip"
+      p1:background="@drawable/background_relative"
+      p1:layout_marginBottom="50dip"
+      p1:layout_height="250dip"
+      p1:visibility="invisible">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/progressBar1"
+        p1:layout_marginTop="15dip"
+        p1:layout_marginLeft="15dip"
+        p1:layout_marginRight="15dip"
+        p1:progress="75"
+        p1:progressBackgroundTint="#2d7effff"
+        p1:backgroundTint="#2d7effff"
+        p1:progressTintMode="add"
+        p1:progressTint="#696969ff" />
+    <TextView
+        p1:text="Zapełnienie"
+        p1:textAppearance="?android:attr/textAppearanceSmall"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView2"
+        p1:textColor="#ff000000"
+        p1:textSize="30px"
+        p1:gravity="center"
+        p1:layout_marginTop="30dip" />
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/relativeLayout3"
+        p1:layout_marginLeft="30dip"
+        p1:layout_marginRight="30dip"
+        p1:layout_marginTop="65dip"
+        p1:layout_marginBottom="75dip"
+        p1:background="#2dbeff">
+      <TextView
+          p1:text=" kategorie towarów"
+          p1:textAppearance="?android:attr/textAppearanceSmall"
+          p1:layout_width="match_parent"
+          p1:layout_height="wrap_content"
+          p1:id="@+id/textView3"
+          p1:textColor="#ff000000"
+          p1:textSize="30px"
+          p1:textStyle="normal"
+          p1:background="#2d7eff" />
+      <TextView
+          p1:text=" tekstylia, meble"
+          p1:textAppearance="?android:attr/textAppearanceSmall"
+          p1:layout_width="match_parent"
+          p1:layout_height="wrap_content"
+          p1:id="@+id/textView4"
+          p1:textSize="30px"
+          p1:textColor="#ff000000"
+          p1:layout_marginTop="15dip" />
+    </RelativeLayout>
+    <Button
+        p1:id="@+id/button1"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:background="#2d7eff"
+        p1:layout_marginTop="200dip"
+        p1:layout_marginRight="50dip"
+        p1:layout_marginLeft="50dip"
+        p1:layout_marginBottom="30dip"
+        p1:text="Pokaż zawartość"
+        p1:textSize="25px"
+        p1:textColor="#ff000000" />
+  </RelativeLayout>
+</LinearLayout>

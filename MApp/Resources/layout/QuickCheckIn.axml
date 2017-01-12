@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff"
+        android:id="@+id/Linearlayout1_QuickCheckIn">
+        <TextView
+            android:text="Przyjęcie"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1_QuickCheckIn"
+            android:textColor="#ff000000"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:textSize="30dp" />
+        <TextView
+            android:text="Nazwa"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2_QuickCheckIn"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="15dp"
+            android:textColor="#ff000000" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:id="@+id/textView3_QuickCheckIn"
+            android:background="@drawable/quickcheckin_textback"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:text="ID"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4_QuickCheckIn"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="15dp"
+            android:textColor="#ff000000" />
+        <RelativeLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout1_QuickCheckIn">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/textView5_QuickCheckIn"
+                android:background="@drawable/quickcheckin_textback"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
+            <LinearLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout2_QuickCheckIn"
+                android:layout_alignBottom="@+id/textView5_QuickCheckIn"
+                android:layout_alignRight="@+id/textView5_QuickCheckIn"
+                android:layout_alignTop="@+id/textView5_QuickCheckIn"
+                android:background="#ff22a4fe"
+                android:layout_marginLeft="200dp">
+                <Button
+                    android:text="Generuj"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/button2_QuickCheckIn"
+                    android:layout_alignTop="@+id/textView5_QuickCheckIn"
+                    android:layout_alignBottom="@+id/textView5_QuickCheckIn"
+                    android:layout_alignRight="@+id/textView5_QuickCheckIn"
+                    style="@style/MyTheme.Base"
+                    android:textColor="#ffff"
+                    android:backgroundTint="#ff22a4fe"
+                    android:background="?attr/selectableItemBackground"
+                    android:textAllCaps="true" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:text="Numer Partii"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6_QuickCheckIn"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="15dp"
+            android:textColor="#ff000000" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/textView7_QuickCheckIn"
+            android:background="@drawable/quickcheckin_textback"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+        <TextView
+            android:text="Producent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8_QuickCheckIn"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="15dp"
+            android:textColor="#ff000000" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/textView9_QuickCheckIn"
+            android:background="@drawable/quickcheckin_textback"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/button1_QuickCheckIn"
+            android:backgroundTint="#ff22a4fe"
+            android:text="Zapisz"
+            android:textColor="#ffff"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="bottom"
+            android:layout_height="50dp" />
+        <TextView
+            android:text="Przybliż Pusty TAG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10_QuickCheckIn"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:textColor="#ff000000"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="25dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+</ScrollView>

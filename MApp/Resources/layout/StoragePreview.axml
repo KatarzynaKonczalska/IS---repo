@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/scrollViewSP">
+    <RelativeLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/linearLayout_1SP">
+        <TextView
+            p1:text="ul. Szosa Lublicka 19a"
+            p1:textAppearance="?android:attr/textAppearanceMedium"
+            p1:layout_width="match_parent"
+            p1:layout_height="25dip"
+            p1:id="@+id/StorageLocalization"
+            p1:gravity="center"
+            p1:background="#0061ff"
+            p1:textColor="#ffffffff"
+            p1:elevation="1dip" />
+        <RelativeLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/LinearLayout_2SP"
+            p1:background="#ffff"
+            p1:visibility="visible"
+            p1:layout_marginTop="25dp"
+            p1:elevation="1dp"
+            p1:translationZ="1px">
+            <GridLayout
+                p1:minWidth="25px"
+                p1:minHeight="200px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/gridLayout_1SP"
+                p1:background="#ffff"
+                p1:elevation="1dip" />
+        </RelativeLayout>
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="150px"
+            p1:id="@+id/LinearLayout_3SP"
+            p1:layout_width="match_parent"
+            p1:background="#ffd1d1d1"
+            p1:layout_height="wrap_content"
+            p1:visibility="gone">
+            <RelativeLayout
+                p1:minWidth="50dip"
+                p1:minHeight="100dip"
+                p1:id="@+id/relativeLayout_2SP"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:background="#ffffffff"
+                p1:layout_margin="50dip">
+                <TextView
+                    p1:text="Kategorie"
+                    p1:textAppearance="?android:attr/textAppearanceMedium"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="25dip"
+                    p1:id="@+id/textView_1SP"
+                    p1:background="#0061ff"
+                    p1:gravity="center"
+                    p1:textColor="#ffff" />
+            </RelativeLayout>
+            <TextView
+                p1:text="Zapełnienie"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
+                p1:layout_height="25dip"
+                p1:id="@+id/textView_Fill"
+                p1:background="#00ffffff"
+                p1:gravity="center"
+                p1:textColor="#f000" />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                p1:layout_width="match_parent"
+                p1:layout_height="10dip"
+                p1:id="@+id/fill_1SP"
+                p1:progress="75"
+                p1:max="100"
+                p1:layout_margin="25dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

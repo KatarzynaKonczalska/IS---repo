@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Impero Storage</string>
+  <string name="strBottomLine">From android material design</string>
+  <string name="open_drawer">Open drawer</string>
+  <string name="close_drawer">Close drawer</string>
+  <string name="LogIn">Zaloguj</string>
+  <string name="Password">Hasło</string>
+  <string name="Username">Nazwa użytkownika</string>
+</resources>

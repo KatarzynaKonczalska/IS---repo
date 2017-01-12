@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff"
+    android:id="@+id/linearLayout1_Checkout">
+    <TextView
+        android:text="Wydanie"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1_Checkout"
+        android:textColor="#ff000000"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:textSize="30dp" />
+    <TextView
+        android:text="przybliż TAG"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2_Checkout"
+        android:textColor="#ff000000"
+        android:gravity="center"
+        android:layout_marginTop="125dp"
+        android:visibility="invisible" />
+    <Button
+        android:text="Usuń TAG z bazy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1_Checkout"
+        android:backgroundTint="#ff22a4fe"
+        android:textColor="#ffff"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp" />
+</LinearLayout>

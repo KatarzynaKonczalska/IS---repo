@@ -1,0 +1,64 @@
+﻿{
+  "0": {
+    "IdRegalu": 1,
+    "MaxPoj": 255,
+    "AktZap": 167,
+    "Produkty": {
+      "1": {
+        "IdProduktu": 1,
+        "Nazwa": "poduszka"
+      },
+      "2": {
+        "IdProduktu": 2,
+        "Nazwa": "koc"
+      },
+      "3": {
+        "IdProduktu": 3,
+        "Nazwa": "dywan"
+      },
+      "4": {
+        "IdProduktu": 4,
+        "Nazwa": "posciel"
+      },
+      "5": {
+        "IdProduktu": 5,
+        "Nazwa": "laczki"
+      },
+      "6": {
+        "IdProduktu": 6,
+        "Nazwa": "materac"
+      }
+    }
+  },
+  "1": {
+    "IdRegalu": 2,
+    "MaxPoj": 255,
+    "AktZap": 0,
+    "Produkty": {
+      "1": {
+        "IdProduktu": 1,
+        "Nazwa": "poduszka"
+      },
+      "2": {
+        "IdProduktu": 2,
+        "Nazwa": "koc"
+      },
+      "3": {
+        "IdProduktu": 3,
+        "Nazwa": "dywan"
+      },
+      "4": {
+        "IdProduktu": 4,
+        "Nazwa": "posciel"
+      },
+      "5": {
+        "IdProduktu": 5,
+        "Nazwa": "laczki"
+      },
+      "6": {
+        "IdProduktu": 6,
+        "Nazwa": "materac"
+      }
+    }
+  }
+}
