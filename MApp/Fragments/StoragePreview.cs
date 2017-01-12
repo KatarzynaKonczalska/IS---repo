@@ -298,6 +298,16 @@ namespace MApp.Fragments
             RelativeLayout ll3 = View.FindViewById<RelativeLayout>(Resource.Id.LinearLayout_3SP);
             TextView t = View.FindViewById<TextView>(Resource.Id.StorageLocalization);
 
+            Button b = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
+            b.Click += delegate
+            {
+                var nowy = new StockTaking();
+                var fm = FragmentManager.BeginTransaction();
+                fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
+                fm.AddToBackStack(null);
+                fm.Commit();
+            };
+            
             RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(gl.LayoutParameters);
             param.Width = ViewGroup.LayoutParams.MatchParent;
             param.Height = ViewGroup.LayoutParams.WrapContent;

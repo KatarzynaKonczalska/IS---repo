@@ -86,6 +86,17 @@
                 p1:progress="75"
                 p1:max="100"
                 p1:layout_margin="25dip" />
+            <Button
+                p1:text="Inwentaryzacja"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/button1_StoragePreview"
+                p1:layout_alignParentBottom="true"
+                p1:layout_centerHorizontal="true"
+                p1:backgroundTint="#ff22a4fe"
+                p1:textColor="#ffff"
+                p1:layout_marginRight="25dp"
+                p1:layout_marginLeft="25dp" />
         </RelativeLayout>
     </RelativeLayout>
 </ScrollView>

@@ -2038,23 +2038,23 @@ namespace MApp
 			// aapt resource value: 0x7f070094
 			public const int HomeFrameLayout = 2131165332;
 			
-			// aapt resource value: 0x7f0700bf
-			public const int LinearLayout_2SP = 2131165375;
+			// aapt resource value: 0x7f0700c4
+			public const int LinearLayout_2SP = 2131165380;
 			
-			// aapt resource value: 0x7f0700c1
-			public const int LinearLayout_3SP = 2131165377;
+			// aapt resource value: 0x7f0700c6
+			public const int LinearLayout_3SP = 2131165382;
 			
 			// aapt resource value: 0x7f0700a5
 			public const int Linearlayout1_QuickCheckIn = 2131165349;
 			
-			// aapt resource value: 0x7f0700be
-			public const int StorageLocalization = 2131165374;
+			// aapt resource value: 0x7f0700c3
+			public const int StorageLocalization = 2131165379;
 			
 			// aapt resource value: 0x7f070097
 			public const int action0 = 2131165335;
 			
-			// aapt resource value: 0x7f0700c7
-			public const int action_attach = 2131165383;
+			// aapt resource value: 0x7f0700cd
+			public const int action_attach = 2131165389;
 			
 			// aapt resource value: 0x7f07005e
 			public const int action_bar = 2131165278;
@@ -2098,8 +2098,8 @@ namespace MApp
 			// aapt resource value: 0x7f07003f
 			public const int action_mode_close_button = 2131165247;
 			
-			// aapt resource value: 0x7f0700c6
-			public const int action_refresh = 2131165382;
+			// aapt resource value: 0x7f0700cc
+			public const int action_refresh = 2131165388;
 			
 			// aapt resource value: 0x7f070040
 			public const int activity_chooser_view_content = 2131165248;
@@ -2136,6 +2136,12 @@ namespace MApp
 			
 			// aapt resource value: 0x7f0700b2
 			public const int button1_QuickCheckIn = 2131165362;
+			
+			// aapt resource value: 0x7f0700bf
+			public const int button1_StockTaking = 2131165375;
+			
+			// aapt resource value: 0x7f0700cb
+			public const int button1_StoragePreview = 2131165387;
 			
 			// aapt resource value: 0x7f0700ad
 			public const int button2_QuickCheckIn = 2131165357;
@@ -2236,8 +2242,8 @@ namespace MApp
 			// aapt resource value: 0x7f070037
 			public const int fill = 2131165239;
 			
-			// aapt resource value: 0x7f0700c5
-			public const int fill_1SP = 2131165381;
+			// aapt resource value: 0x7f0700ca
+			public const int fill_1SP = 2131165386;
 			
 			// aapt resource value: 0x7f070038
 			public const int fill_horizontal = 2131165240;
@@ -2248,8 +2254,8 @@ namespace MApp
 			// aapt resource value: 0x7f07003b
 			public const int @fixed = 2131165243;
 			
-			// aapt resource value: 0x7f0700c0
-			public const int gridLayout_1SP = 2131165376;
+			// aapt resource value: 0x7f0700c5
+			public const int gridLayout_1SP = 2131165381;
 			
 			// aapt resource value: 0x7f070005
 			public const int home = 2131165189;
@@ -2338,8 +2344,8 @@ namespace MApp
 			// aapt resource value: 0x7f0700ac
 			public const int linearLayout2_QuickCheckIn = 2131165356;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int linearLayout_1SP = 2131165373;
+			// aapt resource value: 0x7f0700c2
+			public const int linearLayout_1SP = 2131165378;
 			
 			// aapt resource value: 0x7f07000b
 			public const int listMode = 2131165195;
@@ -2362,17 +2368,17 @@ namespace MApp
 			// aapt resource value: 0x7f070016
 			public const int multiply = 2131165206;
 			
-			// aapt resource value: 0x7f0700cb
-			public const int nav_SearchApartment = 2131165387;
+			// aapt resource value: 0x7f0700d1
+			public const int nav_SearchApartment = 2131165393;
 			
-			// aapt resource value: 0x7f0700ca
-			public const int nav_friends = 2131165386;
+			// aapt resource value: 0x7f0700d0
+			public const int nav_friends = 2131165392;
 			
-			// aapt resource value: 0x7f0700c8
-			public const int nav_home = 2131165384;
+			// aapt resource value: 0x7f0700ce
+			public const int nav_home = 2131165390;
 			
-			// aapt resource value: 0x7f0700c9
-			public const int nav_messages = 2131165385;
+			// aapt resource value: 0x7f0700cf
+			public const int nav_messages = 2131165391;
 			
 			// aapt resource value: 0x7f070095
 			public const int nav_view = 2131165333;
@@ -2428,8 +2434,8 @@ namespace MApp
 			// aapt resource value: 0x7f070081
 			public const int relativeLayout3 = 2131165313;
 			
-			// aapt resource value: 0x7f0700c2
-			public const int relativeLayout_2SP = 2131165378;
+			// aapt resource value: 0x7f0700c7
+			public const int relativeLayout_2SP = 2131165383;
 			
 			// aapt resource value: 0x7f070031
 			public const int right = 2131165233;
@@ -2449,8 +2455,8 @@ namespace MApp
 			// aapt resource value: 0x7f07004f
 			public const int scrollView = 2131165263;
 			
-			// aapt resource value: 0x7f0700bc
-			public const int scrollViewSP = 2131165372;
+			// aapt resource value: 0x7f0700c1
+			public const int scrollViewSP = 2131165377;
 			
 			// aapt resource value: 0x7f07003c
 			public const int scrollable = 2131165244;
@@ -2560,6 +2566,9 @@ namespace MApp
 			// aapt resource value: 0x7f0700a6
 			public const int textView1_QuickCheckIn = 2131165350;
 			
+			// aapt resource value: 0x7f0700bc
+			public const int textView1_StockTaking = 2131165372;
+			
 			// aapt resource value: 0x7f070080
 			public const int textView2 = 2131165312;
 			
@@ -2569,17 +2578,26 @@ namespace MApp
 			// aapt resource value: 0x7f0700a7
 			public const int textView2_QuickCheckIn = 2131165351;
 			
+			// aapt resource value: 0x7f0700bd
+			public const int textView2_StockTaking = 2131165373;
+			
 			// aapt resource value: 0x7f070082
 			public const int textView3 = 2131165314;
 			
 			// aapt resource value: 0x7f0700a8
 			public const int textView3_QuickCheckIn = 2131165352;
 			
+			// aapt resource value: 0x7f0700be
+			public const int textView3_StockTaking = 2131165374;
+			
 			// aapt resource value: 0x7f070083
 			public const int textView4 = 2131165315;
 			
 			// aapt resource value: 0x7f0700a9
 			public const int textView4_QuickCheckIn = 2131165353;
+			
+			// aapt resource value: 0x7f0700c0
+			public const int textView4_StockTaking = 2131165376;
 			
 			// aapt resource value: 0x7f0700ab
 			public const int textView5_QuickCheckIn = 2131165355;
@@ -2596,11 +2614,11 @@ namespace MApp
 			// aapt resource value: 0x7f0700b1
 			public const int textView9_QuickCheckIn = 2131165361;
 			
-			// aapt resource value: 0x7f0700c3
-			public const int textView_1SP = 2131165379;
+			// aapt resource value: 0x7f0700c8
+			public const int textView_1SP = 2131165384;
 			
-			// aapt resource value: 0x7f0700c4
-			public const int textView_Fill = 2131165380;
+			// aapt resource value: 0x7f0700c9
+			public const int textView_Fill = 2131165385;
 			
 			// aapt resource value: 0x7f07008e
 			public const int text_input_password_toggle = 2131165326;
@@ -2878,10 +2896,13 @@ namespace MApp
 			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int StoragePreview = 2130968637;
+			public const int StockTaking = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int support_simple_spinner_dropdown_item = 2130968638;
+			public const int StoragePreview = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int support_simple_spinner_dropdown_item = 2130968639;
 			
 			static Layout()
 			{
