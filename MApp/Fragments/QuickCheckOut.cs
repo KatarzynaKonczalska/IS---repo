@@ -27,6 +27,7 @@ namespace MApp.Fragments
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
             usunTag.Click += delegate
             {
+                // MATEUSZ: ¿¹danie do bazy o usuniêcie tagu
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
