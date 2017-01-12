@@ -39,7 +39,6 @@ namespace MApp.Fragments
             przyjmij.Click += delegate
             {
                 var nowy = new QuickCheckIn();
-                nowy.TakeInt(passedInt);
                 var fm = FragmentManager.BeginTransaction();
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "przyjmij");
                 fm.AddToBackStack(null);
@@ -49,7 +48,6 @@ namespace MApp.Fragments
             wydaj.Click += delegate
             {
                 var nowy = new QuickCheckOut();
-                nowy.TakeInt(passedInt);
                 var fm = FragmentManager.BeginTransaction();
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "wydaj");
                 fm.AddToBackStack(null);
