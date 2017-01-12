@@ -7,8 +7,6 @@ namespace MApp.Fragments
 {
     public class QuickMenu : Fragment
     {
-        int passedInt;
-
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,12 +26,11 @@ namespace MApp.Fragments
 
             inwentaryzacja.Click += delegate
             {
-                var nowy = new SektorDetails();
-                nowy.TakeInt(passedInt);
-                var fm = FragmentManager.BeginTransaction();
-                fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
-                fm.AddToBackStack(null);
-                fm.Commit();
+                //var nowy = new SektorDetails();
+                //var fm = FragmentManager.BeginTransaction();
+                //fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
+                //fm.AddToBackStack(null);
+                //fm.Commit();
             };
 
             przyjmij.Click += delegate
@@ -53,11 +50,6 @@ namespace MApp.Fragments
                 fm.AddToBackStack(null);
                 fm.Commit();
             };
-        }
-
-        public void TakeInt(int value)
-        {
-            passedInt = value;
         }
     }
 }

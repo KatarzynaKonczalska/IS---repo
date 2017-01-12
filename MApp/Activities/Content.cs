@@ -20,9 +20,9 @@ using MApp.Fragments;
 namespace MApp.Activities
 {
     [Activity(Label = "Content", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    [IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-        DataMimeType = ViewApeMimeType,
-        Categories = new[] { "android.intent.category.DEFAULT" })]
+    //[IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
+    //    DataMimeType = ViewApeMimeType,
+    //    Categories = new[] { "android.intent.category.DEFAULT" })]
     public class Content : AppCompatActivity, CheckOutInterface, CheckInInterface
     {
         #region Fields
@@ -72,7 +72,6 @@ namespace MApp.Activities
             //load default home screen
             var ft = FragmentManager.BeginTransaction();
             var QM = new Fragments.QuickMenu();
-            QM.TakeInt(Int32.MaxValue);
             ft.Add(Resource.Id.HomeFrameLayout, QM, "quickmenu");
             ft.AddToBackStack(null);
             ft.Commit();
