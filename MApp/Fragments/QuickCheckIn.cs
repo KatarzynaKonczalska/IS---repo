@@ -3,12 +3,14 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using MApp.REST;
 
 namespace MApp.Fragments
 {
     public class QuickCheckIn : Fragment
     {
         CheckInInterface CinInterface;
+        RESTconnection Conn;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,29 +26,32 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button saveTag = View.FindViewById<Button>(Resource.Id.button1_QuickCheckIn);
-            saveTag.Click += delegate
+            saveTag.Click += async (sender, e) =>
             {
                 //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
-                //MATEUSZ: wys³anie JSON'a do bazy
+                // UNDONE: wys³anie JSON'a do bazy - z kas brac jsona do wyslania
                 buttonCheckIn(view);
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
                 temp.Visibility = ViewStates.Visible;
+                System.Json.JsonValue Data = null;
+                string response = await Conn.SendData(ConnectionTypes.SendAsset, Data);
             };
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
         }
 
-        private void OnClick2(object sender, EventArgs ea)
+        private async void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView5_QuickCheckIn);
             temp.Text = "Generujê...";
 
             //generowanie id
-            //MATEUSZ: generowanie id
-            Random r = new Random();
-            Activities.Content.id2 = r.Next().ToString();
+            // DONE: generowanie id
+            Activities.Content.id2 = await Conn.GenerateId();
+            //Random r = new Random();
+            //Activities.Content.id2 = r.Next().ToString();
         }
 
         public void buttonCheckIn(View v)
@@ -59,6 +64,10 @@ namespace MApp.Fragments
             this.CinInterface = cininterface;
         }
 
+        public void setConnection(RESTconnection con)
+        {
+            Conn = con;
+        }
     }
     public interface CheckInInterface
     {

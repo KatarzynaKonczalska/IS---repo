@@ -8,14 +8,12 @@ using Android.Support.V4.View;
 using Android.Nfc;
 using Android.Widget;
 using Android.Content;
-using System;
-using Android.Renderscripts;
-using Android;
 using Java.IO;
 using Android.Nfc.Tech;
 using Android.Util;
 using System.Text;
 using MApp.Fragments;
+using MApp.REST;
 
 namespace MApp.Activities
 {
@@ -40,6 +38,11 @@ namespace MApp.Activities
         public static bool _inClearMode = false;
         public static NfcAdapter _nfcAdapter;
         string hominidName;
+        #endregion
+
+        #region REST
+        // TODO: Adres servera
+        RESTconnection REST = new RESTconnection("");
         #endregion
 
         #region Override
@@ -253,25 +256,27 @@ namespace MApp.Activities
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
-                    ft.Replace(Resource.Id.HomeFrameLayout, new Fragments.StoragePreview(), "inwentaryzacja_menu");
+                    ft.Replace(Resource.Id.HomeFrameLayout, new StoragePreview(), "inwentaryzacja_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
                     break;
                 case (Resource.Id.nav_messages):
-                    var fragment2 = new Fragments.QuickCheckIn();
+                    var fragment2 = new QuickCheckIn();
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment2, "nfc_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
                     //tworzymy interfejs z fragmentem CheckIn
                     fragment2.setInterface2(this);
+                    fragment2.setConnection(REST);
                     break;
                 case (Resource.Id.nav_friends):
-                    var fragment = new Fragments.QuickCheckOut();
+                    var fragment = new QuickCheckOut();
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment, "CheckOut");
                     ft.AddToBackStack(null);
                     ft.Commit();
                     //tworzymy interfejs z fragmentem CheckOut
                     fragment.setInterface(this);
+                    fragment.setConnection(REST);
                     break;
             }
             // Close drawer
