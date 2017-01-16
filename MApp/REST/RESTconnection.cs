@@ -7,9 +7,9 @@ using System.Text;
 
 namespace MApp.REST
 {
-    public enum ConnectionTypes
+    public enum GetTypes
     {
-        GetAll, GetMagazine, GetAsset, GetSectorAssets, SendAll, SendMagazine, SendAsset, DeleteAll, DeleteMagazine, DeleteAsset
+        GetAll, GetMagazine, GetAsset, GetSectorAssets
     }
     public class RESTconnection
     {
@@ -23,27 +23,27 @@ namespace MApp.REST
             client.BaseAddress = new Uri(ServerUrl);
         }
 
-        public async Task<JsonValue> GetData(ConnectionTypes DownloadDataType, long id = 0)
+        public async Task<JsonValue> GetData(GetTypes DownloadDataType, long id = 0)
         {
             // DONE: GetData
             switch (DownloadDataType)
             {
-                case ConnectionTypes.GetAll:
+                case GetTypes.GetAll:
                     {
                         RESTUrl = "/api/magazine";
                     }
                     break;
-                case ConnectionTypes.GetMagazine:
+                case GetTypes.GetMagazine:
                     {
                         RESTUrl = "/api/magazine[" + id + "]";
                     }
                     break;
-                case ConnectionTypes.GetAsset:
+                case GetTypes.GetAsset:
                     {
                         RESTUrl = "/api/asset[" + id + "]";
                     }
                     break;
-                case ConnectionTypes.GetSectorAssets:
+                case GetTypes.GetSectorAssets:
                     {
                         RESTUrl = "/api/asset/sector/[" + id + "]";
                     }
@@ -64,7 +64,7 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(ConnectionTypes SendDataType, JsonValue Data, long id = 0)
+        public async Task<string> SendData(JsonValue Data, long id = 0)
         {
             // DONE: SendData
             RESTUrl = "/api/asset/add";

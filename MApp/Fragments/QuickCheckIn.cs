@@ -35,7 +35,7 @@ namespace MApp.Fragments
                 temp.Visibility = ViewStates.Visible;
 
                 System.Json.JsonValue Data = null;
-                string response = await Conn.SendData(ConnectionTypes.SendAsset, Data);
+                string response = await Conn.SendData(GetTypes.SendAsset, Data);
             };
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
