@@ -32,7 +32,7 @@ namespace MApp.Fragments
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
-                string response = await Conn.DeleteData(ConnectionTypes.DeleteAsset);
+                string response = await Conn.DeleteData(int.MaxValue); // przykladowe id
             };
         }
 

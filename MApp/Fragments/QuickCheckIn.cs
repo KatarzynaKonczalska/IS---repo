@@ -33,6 +33,7 @@ namespace MApp.Fragments
                 buttonCheckIn(view);
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
                 temp.Visibility = ViewStates.Visible;
+
                 System.Json.JsonValue Data = null;
                 string response = await Conn.SendData(ConnectionTypes.SendAsset, Data);
             };
@@ -47,9 +48,9 @@ namespace MApp.Fragments
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView5_QuickCheckIn);
             temp.Text = "Generujê...";
 
-            //generowanie id
             // DONE: generowanie id
             Activities.Content.id2 = await Conn.GenerateId();
+            
             //Random r = new Random();
             //Activities.Content.id2 = r.Next().ToString();
         }
