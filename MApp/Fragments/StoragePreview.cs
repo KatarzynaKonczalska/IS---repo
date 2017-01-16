@@ -1,22 +1,13 @@
 using System;
-using System.Timers;
-using System.IO;
-using System.Json;
 using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using System.Collections.Generic;
-using Android.Animation;
 using static Android.App.ActionBar;
 using Android.Views.Animations;
-using System.Collections;
-using System.Threading;
-using Android.Transitions;
 
 namespace MApp.Fragments
 {

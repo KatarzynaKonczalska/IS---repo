@@ -74,7 +74,7 @@ namespace MApp.Activities
 
             //load default home screen
             var ft = FragmentManager.BeginTransaction();
-            var QM = new Fragments.QuickMenu();
+            var QM = new QuickMenu();
             ft.Add(Resource.Id.HomeFrameLayout, QM, "quickmenu");
             ft.AddToBackStack(null);
             ft.Commit();

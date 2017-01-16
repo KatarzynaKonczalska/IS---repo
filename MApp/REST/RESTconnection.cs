@@ -64,7 +64,7 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(JsonValue Data, long id = 0)
+        public async Task<string> SendData(JsonValue Data)
         {
             // DONE: SendData
             RESTUrl = "/api/asset/add";
