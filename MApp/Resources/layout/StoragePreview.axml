@@ -34,14 +34,14 @@
             p1:layout_marginTop="25dp"
             p1:elevation="1dp"
             p1:translationZ="1px">
-            <GridLayout
-                p1:minWidth="25px"
-                p1:minHeight="200px"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/gridLayout_1SP"
-                p1:background="#ffff"
-                p1:elevation="1dip" />
+          <GridLayout
+              p1:minWidth="25px"
+              p1:minHeight="200px"
+              p1:layout_width="match_parent"
+              p1:layout_height="wrap_content"
+              p1:id="@+id/gridLayout_1SP"
+              p1:background="#ffff"
+              p1:elevation="1dip"/>
         </RelativeLayout>
         <RelativeLayout
             p1:minWidth="25px"

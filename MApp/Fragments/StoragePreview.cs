@@ -24,6 +24,7 @@ namespace MApp.Fragments
     public class StoragePreview : Fragment
     {
         int lastClicked = -1;
+        int columnMax = 10;
         Color colorClicked = Color.Rgb(45, 126, 255);
         Color colorNotClicked = Color.Rgb(45, 190, 255);
         
@@ -156,17 +157,17 @@ namespace MApp.Fragments
 
         private void _CreateSector() // do zmian po otrzymaniu ostatecznych jsonów.
         {
-            //_LoadValues(_OpenLocalJson(@"jsonLocal2.json"), textNew);// pobierz sektor - nazwê, zape³nienie
+            
             int columnCounter = sectorList.Count;
             int rowCounter = 0;
 
-            while (columnCounter >= 5)
+            while (columnCounter >= columnMax)
             {
-                columnCounter = columnCounter - 5;
+                columnCounter = columnCounter - columnMax;
                 rowCounter++;
             }
 
-            int fill = 50 + 5 * columnCounter;// pobrane z jsona
+            int fill = 50 + sectorList.Count;// pobrane z jsona
             int devW = Resources.DisplayMetrics.WidthPixels;
             int devH = Resources.DisplayMetrics.HeightPixels;
             GridLayout gl = View.FindViewById<GridLayout>(Resource.Id.gridLayout_1SP);
@@ -180,12 +181,15 @@ namespace MApp.Fragments
             RLparams.Width = LayoutParams.MatchParent;
             RLparams.TopMargin = ConvertDpToPixels(25);
             
-            buttonNew.SetMinimumHeight((int)(25));
-            buttonNew.SetMinimumWidth((int)(25));
+            buttonNew.SetMinimumHeight((int)(5));
+            buttonNew.SetMinimumWidth((int)(5));
+            buttonNew.SetPadding(5, 5, 5, 5);
+            LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+            buttonNew.LayoutParameters = buttonParams;
             buttonNew.SetImageResource(Resource.Drawable.buttonDark);
-            buttonNew.SetBackgroundColor(Color.White);
+            buttonNew.SetBackgroundColor(Color.Black);
             buttonNew.Click += SectorClick;
-            buttonNew.Tag = columnCounter;
+            buttonNew.Tag = sectorList.Count;
             sectorList.Add(sectorList.Count, buttonNew);
 
             GridLayout.Spec col = GridLayout.InvokeSpec(columnCounter, GridLayout.Center);// kolumna pobrana z jsona
@@ -206,7 +210,7 @@ namespace MApp.Fragments
             int k = 0;
             foreach (TextView item in categoryList)
             {
-                item.Text = "Kategoria_" + (categoryList.Count * columnCounter + k);
+                item.Text = "Kategoria_" + (categoryList.Count * (sectorList.Count-1) + k);
                 item.SetWidth(rl.RootView.MeasuredWidth);
                 item.SetHeight(ConvertDpToPixels(25));
                 item.TranslationY = k * ConvertDpToPixels(25);
@@ -314,6 +318,7 @@ namespace MApp.Fragments
                 item.Clear();
             }
             CategoryLists.Clear();
+            lastClicked = -1;
 
 
             GridLayout gl = View.FindViewById<GridLayout>(Resource.Id.gridLayout_1SP);
@@ -322,8 +327,8 @@ namespace MApp.Fragments
             RelativeLayout ll3 = View.FindViewById<RelativeLayout>(Resource.Id.LinearLayout_3SP);
             TextView t = View.FindViewById<TextView>(Resource.Id.StorageLocalization);
 
-            Button b = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
-            b.Click += delegate
+            Button stockTaking = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
+            stockTaking.Click += delegate
             {
                 var nowy = new StockTaking();
                 var fm = FragmentManager.BeginTransaction();
@@ -335,8 +340,8 @@ namespace MApp.Fragments
             RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(gl.LayoutParameters);
             param.Width = ViewGroup.LayoutParams.MatchParent;
             param.Height = ViewGroup.LayoutParams.WrapContent;
-            gl.RowCount = 10;
-            gl.ColumnCount = 10;
+            gl.RowCount = columnMax;
+            gl.ColumnCount = columnMax;
             gl.SetBackgroundColor(Color.White);
             gl.LayoutParameters = param;
 
