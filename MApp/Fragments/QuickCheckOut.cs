@@ -1,8 +1,8 @@
-using System;
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using MApp.REST;
 
 namespace MApp.Fragments
 {
@@ -10,6 +10,7 @@ namespace MApp.Fragments
     {
         CheckOutInterface CoutInterface;
         int passedInt;
+        RESTconnection Conn;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,12 +26,13 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
-            usunTag.Click += delegate
+            usunTag.Click += async (sender, e) =>
             {
-                // MATEUSZ: ¿¹danie do bazy o usuniêcie tagu
+                // DONE: ¿¹danie do bazy o usuniêcie tagu
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
+                string response = await Conn.DeleteData(int.MaxValue); // przykladowe id
             };
         }
 
@@ -44,6 +46,10 @@ namespace MApp.Fragments
             this.CoutInterface = coutinterface;
         }
 
+        public void setConnection(RESTconnection con)
+        {
+            Conn = con;
+        }
     }
 
     public interface CheckOutInterface

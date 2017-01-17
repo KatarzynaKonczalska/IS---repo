@@ -16,6 +16,7 @@ using Android.Nfc.Tech;
 using Android.Util;
 using System.Text;
 using MApp.Fragments;
+using MApp.REST;
 
 namespace MApp.Activities
 {
@@ -28,6 +29,11 @@ namespace MApp.Activities
         #region Fields
         DrawerLayout drawerLayout;
         int backCount = 0;
+        #endregion
+
+        #region REST
+        // TODO: Adres servera
+        RESTconnection REST = new RESTconnection("");
         #endregion
 
         #region NFC Fields
@@ -264,6 +270,7 @@ namespace MApp.Activities
                     ft.Commit();
                     //tworzymy interfejs z fragmentem CheckIn
                     fragment2.setInterface2(this);
+                    fragment2.setConnection(REST);
                     break;
                 case (Resource.Id.nav_friends):
                     var fragment = new Fragments.QuickCheckOut();
@@ -272,6 +279,7 @@ namespace MApp.Activities
                     ft.Commit();
                     //tworzymy interfejs z fragmentem CheckOut
                     fragment.setInterface(this);
+                    fragment.setConnection(REST);
                     break;
             }
             // Close drawer
