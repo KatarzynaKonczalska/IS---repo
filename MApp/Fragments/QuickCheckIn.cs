@@ -8,7 +8,7 @@ namespace MApp.Fragments
 {
     public class QuickCheckIn : Fragment
     {
-        int passedInt;
+        CheckInInterface CinInterface;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,28 +24,44 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button saveTag = View.FindViewById<Button>(Resource.Id.button1_QuickCheckIn);
-            saveTag.Click += OnClick;
+            saveTag.Click += delegate
+            {
+                //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
+                //MATEUSZ: wys³anie JSON'a do bazy
+                buttonCheckIn(view);
+                TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
+                temp.Visibility = ViewStates.Visible;
+            };
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
         }
 
-        public void TakeInt(int value)
-        {
-            passedInt = value;
-        }
-
-        private void OnClick(object sender, EventArgs ea)
-        //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'; Legolas -> Kasia
-        {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
-            temp.Visibility = ViewStates.Visible;
-        }
         private void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView5_QuickCheckIn);
             temp.Text = "Generujê...";
+
+            //generowanie id
+            //MATEUSZ: generowanie id
+            Random r = new Random();
+            Activities.Content.id2 = r.Next().ToString();
         }
+
+        public void buttonCheckIn(View v)
+        {
+            CinInterface.buttonCheckIn(v);
+        }
+
+        public void setInterface2(CheckInInterface cininterface)
+        {
+            this.CinInterface = cininterface;
+        }
+
+    }
+    public interface CheckInInterface
+    {
+        void buttonCheckIn(View v);
     }
 }
