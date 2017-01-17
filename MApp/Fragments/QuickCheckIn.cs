@@ -40,7 +40,7 @@ namespace MApp.Fragments
         private void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
         {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView5_QuickCheckIn);
+            TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
             temp.Text = "Generujê...";
 
             //generowanie id
