@@ -50,7 +50,9 @@ namespace MApp.Fragments
 
             // DONE: generowanie id
             Activities.Content.id2 = await Conn.GenerateId();
-            
+
+            EditText Nazwa = View.FindViewById<EditText>(Resource.Id.editText1_QuickCheckIn);
+
             //Random r = new Random();
             //Activities.Content.id2 = r.Next().ToString();
         }
