@@ -64,12 +64,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(JsonValue Data)
+        public async Task<string> SendData(string Data)
         {
             // DONE: SendData
             RESTUrl = "/api/asset/add";
 
-            using (HttpResponseMessage response = await client.PostAsync(RESTUrl, new StringContent(Data.ToString(), Encoding.UTF8, "application/json")))
+            using (HttpResponseMessage response = await client.PostAsync(RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
