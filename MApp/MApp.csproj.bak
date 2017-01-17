@@ -108,6 +108,7 @@
     <Compile Include="Fragments\QuickCheckOut.cs" />
     <Compile Include="Fragments\QuickMenu.cs" />
     <Compile Include="Fragments\SektorDetails.cs" />
+    <Compile Include="Fragments\StockTaking.cs" />
     <Compile Include="Fragments\StoragePreview.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
