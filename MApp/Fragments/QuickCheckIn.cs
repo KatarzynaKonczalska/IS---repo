@@ -54,30 +54,22 @@ namespace MApp.Fragments
             TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
             temp.Text = "Generujê...";
 
-            //generowanie id
             // DONE: generowanie id
-            //Activities.Content.id2 = await Conn.GenerateId();
-
-            string resp;
             try
             {
-                resp = await Conn.GetData(GetTypes.GetAll);
-                Console.WriteLine(resp.ToString());
-                //Random r = new Random();
-                //Activities.Content.id2 = r.Next().ToString();
+                //resp = await Conn.DeleteData(123);
+                //resp = await Conn.GetData(GetTypes.GetAll);
+                //string json = "{\"assetName\": \"Lech piwo 4pak\",\"assetAmount\": 301,\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\",1],\"NFCTag\": \"0001\",\"assetDetails\": {\"label\":\"value\"}}";
+                //resp = await Conn.SendData(json);
+                //var resp = await Conn.GetData(GetTypes.GetMagazine, "583ea7f9d6194c0c6f51fa70");
+                //Console.WriteLine(resp.ToString());
+                var resp = await Conn.GenerateId();
+                Activities.Content.id2 = resp;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-            //HttpWebRequest wr = (HttpWebRequest)WebRequest.Create("http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo");
-            //var response = (HttpWebResponse)await wr.GetResponseAsync();
-            //using (StreamReader s = new StreamReader(response.GetResponseStream()))
-            //{
-            //    string cont = await s.ReadToEndAsync();
-            //    Console.WriteLine(cont);
-            //}     
         }
 
         public void buttonCheckIn(View v)
