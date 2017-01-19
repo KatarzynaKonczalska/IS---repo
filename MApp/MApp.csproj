@@ -225,13 +225,13 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main_background.png" />
+    <AndroidResource Include="Resources\drawable\main_1.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\main_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main_1.png" />
+    <AndroidResource Include="Resources\drawable\main_background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions />
