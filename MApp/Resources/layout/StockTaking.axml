@@ -1,7 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:background="#ffff">
+        <TextView
+            android:text="Inwentaryzacja"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1_StockTaking"
+            android:textColor="#ff000000"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_marginTop="15dp" />
+        <TextView
+            android:text="Zeskanowano materiałów:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2_StockTaking"
+            android:textColor="#ff000000"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginTop="45dp" />
+        <TextView
+            android:text="15/143"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3_StockTaking"
+            android:textColor="#ff000000"
+            android:textSize="50dp"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp" />
+         <Button
+            android:text="Pokaż Brakujące"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button1_StockTaking"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#ff22a4fe"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp" />
+        <TextView
+            android:text="Przyłóż TAG"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4_StockTaking"
+            android:textColor="#ff000000"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_marginBottom="150dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+</ScrollView>
