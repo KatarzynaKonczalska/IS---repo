@@ -2,20 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:text="Inwentaryzacja"
+    android:layout_height="wrap_content"
+    android:id="@+id/Background_QM"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="@drawable/main_2">
+    <TextView
+        android:text="Impero Storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/inwentaryzacja" />
-    <Button
-        android:text="Przyjecie"
-        android:layout_width="match_parent"
+        android:id="@+id/textView1"
+        android:textColor="@color/background_floating_material_light"
+        android:layout_marginRight="0.0dp"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+        android:elevation="1dp" />
+    <ImageView
+        android:src="@drawable/main_1"
+        android:layout_width="179.0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/przyjecie" />
-    <Button
-        android:text="Wydanie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/wydanie" />
+        android:id="@+id/imageView1"
+        android:layout_marginRight="0.0dp"
+        android:layout_marginLeft="0.0dp"
+        android:layout_gravity="center" />
 </LinearLayout>
