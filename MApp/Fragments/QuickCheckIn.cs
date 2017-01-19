@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using MApp.REST;
+using System.Json;
+using System.Net;
+using System.IO;
 
 namespace MApp.Fragments
 {
@@ -40,7 +43,10 @@ namespace MApp.Fragments
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
+
         }
+
+
 
         private async void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
@@ -48,12 +54,22 @@ namespace MApp.Fragments
             TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
             temp.Text = "Generujê...";
 
-            //generowanie id
             // DONE: generowanie id
-            Activities.Content.id2 = await Conn.GenerateId();
-
-            //Random r = new Random();
-            //Activities.Content.id2 = r.Next().ToString();
+            try
+            {
+                //resp = await Conn.DeleteData(123);
+                //resp = await Conn.GetData(GetTypes.GetAll);
+                //string json = "{\"assetName\": \"Lech piwo 4pak\",\"assetAmount\": 301,\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\",1],\"NFCTag\": \"0001\",\"assetDetails\": {\"label\":\"value\"}}";
+                //resp = await Conn.SendData(json);
+                //var resp = await Conn.GetData(GetTypes.GetMagazine, "583ea7f9d6194c0c6f51fa70");
+                //Console.WriteLine(resp.ToString());
+                var resp = await Conn.GenerateId();
+                Activities.Content.id2 = resp;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void buttonCheckIn(View v)

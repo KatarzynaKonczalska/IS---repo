@@ -20,45 +20,44 @@ namespace MApp.REST
         {
             this.ServerUrl = ServerUrl;
             client = new HttpClient();
-            client.BaseAddress = new Uri(ServerUrl);
+            client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<JsonValue> GetData(GetTypes DownloadDataType, long id = 0)
+        public async Task<JsonValue> GetData(GetTypes DownloadDataType, string id = "")
         {
             // DONE: GetData
             switch (DownloadDataType)
             {
                 case GetTypes.GetAll:
                     {
-                        RESTUrl = "/api/magazine";
+                        //RESTUrl = "http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo";
+                        RESTUrl = "/api/magazine?format=json";
                     }
                     break;
                 case GetTypes.GetMagazine:
                     {
-                        RESTUrl = "/api/magazine[" + id + "]";
+                        RESTUrl = "/api/magazine/" + id;
                     }
                     break;
                 case GetTypes.GetAsset:
                     {
-                        RESTUrl = "/api/asset[" + id + "]";
+                        RESTUrl = "/api/asset/" + id;
                     }
                     break;
                 case GetTypes.GetSectorAssets:
                     {
-                        RESTUrl = "/api/asset/sector/[" + id + "]";
+                        RESTUrl = "/api/asset/sector/" + id;
                     }
                     break;
             }
 
-            using (HttpResponseMessage response = await client.GetAsync(RESTUrl))
+            using (HttpResponseMessage response = await client.GetAsync(ServerUrl + RESTUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    using (Stream stream = await response.Content.ReadAsStreamAsync())
-                    {
-                        JsonValue Data = await Task.Run(() => JsonObject.Load(stream));
-                        return Data;
-                    }
+                    string stream = await response.Content.ReadAsStringAsync();
+                    JsonValue data = JsonObject.Parse(stream);
+                    return data;
                 }
                 throw new Exception("Error witch connecting to server.");
             }
@@ -69,7 +68,7 @@ namespace MApp.REST
             // DONE: SendData
             RESTUrl = "/api/asset/add";
 
-            using (HttpResponseMessage response = await client.PostAsync(RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
+            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -84,9 +83,10 @@ namespace MApp.REST
         {
             // DONE: DeleteData
             
-            RESTUrl = "/api/asset/[" + id + "]/delete";
+            //RESTUrl = "/api/asset/[" + id + "]/delete";
+            RESTUrl = "/api/asset/nfc/123/delete";
 
-            using (HttpResponseMessage response = await client.DeleteAsync(RESTUrl))
+            using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,7 +102,7 @@ namespace MApp.REST
             // TODO: Link do generowania id
             RESTUrl = "";
 
-            using (HttpResponseMessage response = await client.GetAsync(RESTUrl))
+            using (HttpResponseMessage response = await client.GetAsync(ServerUrl + RESTUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
