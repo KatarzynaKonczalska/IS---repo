@@ -20,6 +20,7 @@ namespace MApp.REST
         {
             this.ServerUrl = ServerUrl;
             client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000;
             //client.BaseAddress = new Uri(ServerUrl);
         }
 
