@@ -24,9 +24,11 @@ namespace MApp.Fragments
     public class StoragePreview : Fragment
     {
         int lastClicked = -1;
-        int columnMax = 10;
+        int columnMax = 6;
         Color colorClicked = Color.Rgb(45, 126, 255);
         Color colorNotClicked = Color.Rgb(45, 190, 255);
+        int durationInMiliseconds = 1000;
+        int animUsed = 0;
         
         List<int> sectorFill = new List<int>();
         Dictionary<int, ImageButton> sectorList = new Dictionary<int, ImageButton>();
@@ -54,7 +56,6 @@ namespace MApp.Fragments
             RelativeLayout ll3 = View.FindViewById<RelativeLayout>(Resource.Id.LinearLayout_3SP); 
             RelativeLayout RLCurrent = relativeLayoutCollection.ElementAt(ButtonNum);
             RelativeLayout RLLast;
-            int animTime = 1000; // animation length in ms
 
             RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(ll3.LayoutParameters);
             param2.SetMargins(0, ll2.Bottom, 0,0);
@@ -77,14 +78,14 @@ namespace MApp.Fragments
                 // poka¿ kontent
                 myButton.SetImageResource(Resource.Drawable.buttonLight);
                 ll3.Visibility = ViewStates.Visible;
-                _TranslateAnimationMethod(ll3, 0, 0, -ll3.Bottom, 0, animTime, false, ButtonNum, false);
+                _TranslateAnimationMethod_1(ll3, ButtonNum);
             }
             else if (lastClicked == ButtonNum && ll3.Visibility == ViewStates.Visible)
             // poprzedni klik by³ na ten przycisk i jest widoczny kontent
             {
                 // schowaj kontent
                 myButton.SetImageResource(Resource.Drawable.buttonDark);
-                _TranslateAnimationMethod(ll3, 0, 0, 0, -ll3.Bottom, animTime, false, ButtonNum, true);
+                _TranslateAnimationMethod_2(ll3, ButtonNum);
                 
             }
             else if (lastClicked != ButtonNum && ll3.Visibility != ViewStates.Visible)
@@ -98,7 +99,7 @@ namespace MApp.Fragments
                 RLCurrent.Visibility = ViewStates.Visible;
                 //pokazuje
                 ll3.Visibility = ViewStates.Visible;
-                _TranslateAnimationMethod(ll3, 0, 0, -ll3.Bottom, 0, animTime, false, ButtonNum, false);
+                _TranslateAnimationMethod_3(ll3, ButtonNum);
 
             }
             else if (lastClicked != ButtonNum && ll3.Visibility == ViewStates.Visible)
@@ -106,7 +107,7 @@ namespace MApp.Fragments
             {
                 // schowaj kontent, zmieñ kontent i poka¿
                 lastButton.SetImageResource(Resource.Drawable.buttonDark);
-                _TranslateAnimationMethod(ll3, 0, 0, 0, -ll3.Bottom, animTime, true, ButtonNum, false);
+                _TranslateAnimationMethod_4(ll3, ButtonNum);
 
             }
             lastClicked = ButtonNum;
@@ -155,6 +156,81 @@ namespace MApp.Fragments
             }
         }
 
+        private void _TranslateAnimationMethod_1(View viewToAnimate, int ButtonNum)
+        {
+            RelativeLayout ll2 = View.FindViewById<RelativeLayout>(Resource.Id.LinearLayout_2SP);
+            if (animUsed == 0)
+            {
+                viewToAnimate.Visibility = ViewStates.Visible;
+                Animation animation = new TranslateAnimation(0, 0, -viewToAnimate.Bottom, 0);
+                animation.Duration = durationInMiliseconds;
+                animation.FillAfter = true;
+                viewToAnimate.StartAnimation(animation);
+                animUsed++;
+            }
+            else
+            {
+                viewToAnimate.Visibility = ViewStates.Visible;
+                Animation animation = new TranslateAnimation(0, 0, -viewToAnimate.Bottom, ll2.Height);
+                animation.Duration = durationInMiliseconds;
+                animation.FillAfter = true;
+                viewToAnimate.StartAnimation(animation);
+            }
+            
+        }
+        private void _TranslateAnimationMethod_2(View viewToAnimate, int ButtonNum)
+        {
+            Animation animation = new TranslateAnimation(0, 0, 0, -(viewToAnimate.Bottom));
+            animation.Duration = durationInMiliseconds;
+            animation.FillAfter = true;
+            viewToAnimate.StartAnimation(animation);
+
+            animation.AnimationEnd += delegate
+            {
+                viewToAnimate.Visibility = ViewStates.Gone;
+            };
+
+        }
+        private void _TranslateAnimationMethod_3(View viewToAnimate, int ButtonNum)
+        {
+            Animation animation = new TranslateAnimation(0, 0, -(viewToAnimate.Bottom), 0);
+            animation.Duration = durationInMiliseconds;
+            animation.FillAfter = true;
+            viewToAnimate.StartAnimation(animation);
+        } 
+        private void _TranslateAnimationMethod_4(View viewToAnimate, int ButtonNum)
+        {
+            Animation animation = new TranslateAnimation(0, 0, 0, -(viewToAnimate.Bottom));
+            animation.Duration = durationInMiliseconds;
+            animation.FillAfter = true;
+            viewToAnimate.StartAnimation(animation);
+
+            animation.AnimationEnd += delegate
+                {
+                    RelativeLayout RLLast = relativeLayoutCollection.ElementAt(lastClicked);
+                    RelativeLayout RLCurrent = relativeLayoutCollection.ElementAt(ButtonNum);
+                    ProgressBar progress = View.FindViewById<ProgressBar>(Resource.Id.fill_1SP);
+                    sectorList.ElementAt(ButtonNum).Value.SetImageResource(Resource.Drawable.buttonLight);
+
+                    viewToAnimate.Visibility = ViewStates.Gone;
+
+                    foreach (var item in relativeLayoutCollection)
+                    {
+                        item.Visibility = ViewStates.Gone;
+                    }
+                    RLCurrent.Visibility = ViewStates.Visible;
+                    progress.Progress = sectorFill.ElementAt(ButtonNum);
+
+                    viewToAnimate.Visibility = ViewStates.Visible;
+
+                    Animation animation2 = new TranslateAnimation(0, 0, -(viewToAnimate.Bottom), 0);
+                    animation2.Duration = durationInMiliseconds;
+                    animation2.FillAfter = true;
+                    viewToAnimate.StartAnimation(animation2);
+                };
+            
+        }
+
         private void _CreateSector() // do zmian po otrzymaniu ostatecznych jsonów.
         {
             
@@ -183,11 +259,8 @@ namespace MApp.Fragments
             
             buttonNew.SetMinimumHeight((int)(5));
             buttonNew.SetMinimumWidth((int)(5));
-            buttonNew.SetPadding(5, 5, 5, 5);
-            LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
-            buttonNew.LayoutParameters = buttonParams;
             buttonNew.SetImageResource(Resource.Drawable.buttonDark);
-            buttonNew.SetBackgroundColor(Color.Black);
+            buttonNew.SetBackgroundColor(Color.White);
             buttonNew.Click += SectorClick;
             buttonNew.Tag = sectorList.Count;
             sectorList.Add(sectorList.Count, buttonNew);
@@ -319,7 +392,7 @@ namespace MApp.Fragments
             }
             CategoryLists.Clear();
             lastClicked = -1;
-
+            animUsed = 0;
 
             GridLayout gl = View.FindViewById<GridLayout>(Resource.Id.gridLayout_1SP);
             RelativeLayout ll1 = View.FindViewById<RelativeLayout>(Resource.Id.linearLayout_1SP);
