@@ -33,7 +33,7 @@ namespace MApp.Activities
 
         #region REST
         // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("");
+        RESTconnection REST = new RESTconnection("158.75.40.118:8000");
         #endregion
 
         #region NFC Fields

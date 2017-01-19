@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using MApp.REST;
+using System.Json;
+using System.Net;
+using System.IO;
 
 namespace MApp.Fragments
 {
@@ -40,7 +43,10 @@ namespace MApp.Fragments
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
+
         }
+
+
 
         private async void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
@@ -50,10 +56,28 @@ namespace MApp.Fragments
 
             //generowanie id
             // DONE: generowanie id
-            Activities.Content.id2 = await Conn.GenerateId();
+            //Activities.Content.id2 = await Conn.GenerateId();
 
-            //Random r = new Random();
-            //Activities.Content.id2 = r.Next().ToString();
+            string resp;
+            try
+            {
+                resp = await Conn.GetData(GetTypes.GetAll);
+                Console.WriteLine(resp.ToString());
+                //Random r = new Random();
+                //Activities.Content.id2 = r.Next().ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            //HttpWebRequest wr = (HttpWebRequest)WebRequest.Create("http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo");
+            //var response = (HttpWebResponse)await wr.GetResponseAsync();
+            //using (StreamReader s = new StreamReader(response.GetResponseStream()))
+            //{
+            //    string cont = await s.ReadToEndAsync();
+            //    Console.WriteLine(cont);
+            //}     
         }
 
         public void buttonCheckIn(View v)
