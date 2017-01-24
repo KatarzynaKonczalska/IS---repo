@@ -164,16 +164,18 @@ namespace MApp.Fragments
             if (animUsed == 0)
             {
                 viewToAnimate.Visibility = ViewStates.Visible;
-                Animation animation = new TranslateAnimation(0, 0, -viewToAnimate.Bottom, 0);
+                int i = viewToAnimate.Bottom;
+                /*Animation animation = new TranslateAnimation(0, 0, -(), ll2.Bottom);
                 animation.Duration = durationInMiliseconds;
                 animation.FillAfter = true;
                 viewToAnimate.StartAnimation(animation);
                 animUsed++;
+                */
             }
             else
             {
                 viewToAnimate.Visibility = ViewStates.Visible;
-                Animation animation = new TranslateAnimation(0, 0, -viewToAnimate.Bottom, ll2.Height);
+                Animation animation = new TranslateAnimation(0, 0, -viewToAnimate.Bottom, 0);
                 animation.Duration = durationInMiliseconds;
                 animation.FillAfter = true;
                 viewToAnimate.StartAnimation(animation);
