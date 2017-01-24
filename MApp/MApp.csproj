@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -222,13 +222,13 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main_background.png" />
+    <AndroidResource Include="Resources\drawable\main_1.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\main_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main_1.png" />
+    <AndroidResource Include="Resources\drawable\main_background.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\imgBg.png" />

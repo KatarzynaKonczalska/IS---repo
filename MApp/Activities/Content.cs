@@ -190,6 +190,7 @@ namespace MApp.Activities
                 }
 
                 ndef.WriteNdefMessage(ndefMessage);
+                //hehe
 
                 if (_inClearMode)
                 {
