@@ -39,6 +39,7 @@ namespace MApp.Activities
         #region NFC Fields
         public static string id, id2;
         public static bool write = false;
+        public static bool _tagWritten;
         public const string ViewApeMimeType = "application/vnd.xamarin.nfcxample";
         public static readonly string NfcAppRecord = "xamarin.nfxample";
         public static readonly string Tag = "NfcXample";
@@ -200,6 +201,7 @@ namespace MApp.Activities
                 else
                 {
                     Toast.MakeText(this, "Succesfully wrote tag.", ToastLength.Short).Show();
+                    _tagWritten = true;
                 }
                 return true;
             }
@@ -229,6 +231,7 @@ namespace MApp.Activities
                     else
                     {
                         Toast.MakeText(this, "Tag successfully written", ToastLength.Short);
+                        _tagWritten = true;
                     }
                     return true;
                 }
