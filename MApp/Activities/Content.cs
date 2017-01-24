@@ -33,7 +33,7 @@ namespace MApp.Activities
 
         #region REST
         // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("http://192.168.0.16:8000");
+        RESTconnection REST = new RESTconnection("http://158.75.44.109:8000");
         #endregion
 
         #region NFC Fields
@@ -263,9 +263,11 @@ namespace MApp.Activities
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
-                    ft.Replace(Resource.Id.HomeFrameLayout, new Fragments.StoragePreview(), "inwentaryzacja_menu");
+                    var sp = new Fragments.StoragePreview();
+                    ft.Replace(Resource.Id.HomeFrameLayout, sp, "inwentaryzacja_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
+                    sp.setConnection(REST);
                     break;
                 case (Resource.Id.nav_messages):
                     var fragment2 = new Fragments.QuickCheckIn();
