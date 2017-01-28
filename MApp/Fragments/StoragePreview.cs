@@ -17,12 +17,14 @@ using Android.Views.Animations;
 using System.Collections;
 using System.Threading;
 using Android.Transitions;
+using MApp.REST;
 
 namespace MApp.Fragments
 {
 
     public class StoragePreview : Fragment
     {
+        RESTconnection Conn;
         int lastClicked = -1;
         int columnMax = 6;
         Color colorClicked = Color.Rgb(45, 126, 255);
@@ -403,13 +405,15 @@ namespace MApp.Fragments
             TextView t = View.FindViewById<TextView>(Resource.Id.StorageLocalization);
 
             Button stockTaking = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
-            stockTaking.Click += delegate
+            stockTaking.Click += async (sender, e) =>
             {
+                var data = await Conn.GetData(GetTypes.GetSectorAssets, "1");
                 var nowy = new StockTaking();
                 var fm = FragmentManager.BeginTransaction();
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
                 fm.AddToBackStack(null);
                 fm.Commit();
+                nowy.setData(data);
             };
 
             RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(gl.LayoutParameters);
@@ -426,6 +430,9 @@ namespace MApp.Fragments
             for (int j = 0; j < 16; j++)
                 _CreateSector();
         }
-
+        public void setConnection(RESTconnection con)
+        {
+            Conn = con;
+        }
     }
 }
