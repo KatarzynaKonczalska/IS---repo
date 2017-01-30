@@ -14,7 +14,7 @@ namespace MApp.REST
 
     public enum SendType
     {
-        SendData, GetId
+        GetId, SendData
     }
 
     public class RESTconnection
@@ -36,7 +36,6 @@ namespace MApp.REST
             {
                 case GetTypes.GetAll:
                     {
-                        //RESTUrl = "http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo";
                         RESTUrl = "/api/magazine?format=json";
                     }
                     break;
@@ -72,14 +71,17 @@ namespace MApp.REST
         public async Task<string> SendData(string Data, SendType type, string id = null)
         {
             // DONE: SendData
-           
             switch (type)
             {
                 case SendType.GetId:
-                    RESTUrl = "/api/asset/add";
+                    {
+                        RESTUrl = "/api/asset/add";
+                    }
                     break;
                 case SendType.SendData:
-                    RESTUrl = "/api/asset/" + id + "/update";
+                    {
+                        RESTUrl = "/api/asset/" + id + "/update";
+                    }
                     break;
             }
 
@@ -98,7 +100,7 @@ namespace MApp.REST
         {
             // DONE: DeleteData
             
-            //RESTUrl = "/api/asset/[" + id + "]/delete";
+            //RESTUrl = "/api/asset/" + id + "/delete";
             RESTUrl = "/api/asset/nfc/123/delete";
 
             using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
