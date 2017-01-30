@@ -12,11 +12,6 @@ namespace MApp.REST
         GetAll, GetMagazine, GetAsset, GetSectorAssets
     }
 
-    public enum SendType
-    {
-        GetId, SendData
-    }
-
     public class RESTconnection
     {
         string ServerUrl, RESTUrl;
@@ -68,24 +63,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(string Data, SendType type, string id = null)
+        public async Task<string> SendData(string Data, string id)
         {
-            // DONE: SendData
-            switch (type)
-            {
-                case SendType.GetId:
-                    {
-                        RESTUrl = "/api/asset/add";
-                    }
-                    break;
-                case SendType.SendData:
-                    {
-                        RESTUrl = "/api/asset/" + id + "/update";
-                    }
-                    break;
-            }
+            // TODO: Poprawic
+            RESTUrl = "/api/asset/" + id + "/update";
 
-            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
+            using (HttpResponseMessage response = await client.PutAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -99,7 +82,7 @@ namespace MApp.REST
         public async Task<string> DeleteData(long id)
         {
             // DONE: DeleteData
-            
+
             //RESTUrl = "/api/asset/" + id + "/delete";
             RESTUrl = "/api/asset/nfc/123/delete";
 
@@ -108,6 +91,23 @@ namespace MApp.REST
                 if (response.IsSuccessStatusCode)
                 {
                     string message = await response.Content.ReadAsStringAsync();
+                    return message;
+                }
+                throw new Exception("Error witch connecting to server.");
+            }
+        }
+
+        public async Task<string> GenerateId(string ServerTrigger = "{}")
+        {
+            RESTUrl = "/api/asset/add";
+
+            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(ServerTrigger, Encoding.UTF8, "application/json")))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    string message = await response.Content.ReadAsStringAsync();
+                    JsonValue id = JsonObject.Parse(message);
+                    message = id["id"].ToString().Trim('"');
                     return message;
                 }
                 throw new Exception("Error witch connecting to server.");
