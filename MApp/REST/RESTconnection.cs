@@ -11,6 +11,12 @@ namespace MApp.REST
     {
         GetAll, GetMagazine, GetAsset, GetSectorAssets
     }
+
+    public enum SendType
+    {
+        SendData, GetId
+    }
+
     public class RESTconnection
     {
         string ServerUrl, RESTUrl;
@@ -63,10 +69,19 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(string Data)
+        public async Task<string> SendData(string Data, SendType type, string id = null)
         {
             // DONE: SendData
-            RESTUrl = "/api/asset/add";
+           
+            switch (type)
+            {
+                case SendType.GetId:
+                    RESTUrl = "/api/asset/add";
+                    break;
+                case SendType.SendData:
+                    RESTUrl = "/api/asset/" + id + "/update";
+                    break;
+            }
 
             using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
@@ -92,22 +107,6 @@ namespace MApp.REST
                 {
                     string message = await response.Content.ReadAsStringAsync();
                     return message;
-                }
-                throw new Exception("Error witch connecting to server.");
-            }
-        }
-
-        public async Task<string> GenerateId()
-        {
-            // TODO: Link do generowania id
-            RESTUrl = "";
-
-            using (HttpResponseMessage response = await client.GetAsync(ServerUrl + RESTUrl))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    string GeneratedId = await response.Content.ReadAsStringAsync();
-                    return GeneratedId;
                 }
                 throw new Exception("Error witch connecting to server.");
             }

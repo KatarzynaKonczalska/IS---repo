@@ -7,11 +7,22 @@ using MApp.REST;
 using System.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MApp.Fragments
 {
     public class StockTaking : Fragment
     {
+        class JsonData
+        {
+            public JsonData(string id, string nazwa)
+            {
+                ID = id; Nazwa = nazwa;
+            }
+            public string ID { get; private set; }
+            public string Nazwa { get; private set; }
+        }
+
         JsonValue Data;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -32,16 +43,21 @@ namespace MApp.Fragments
             Console.WriteLine(Data.ToString());
 
             //na liste
-            List<string> dataList = new List<string>();
+            List<JsonData> dataList = new List<JsonData>();
             for (int i = 0; i < Data.Count; i++)
             {
-                var a = Data[i]["id"];
-                dataList.Add(a.ToString().Trim('"'));
+                var a = Data[i];
+                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
             }
-            foreach (var item in dataList)
-            {
-                Console.WriteLine(item);
-            }
+
+            var element = from data in dataList
+                          where data.ID == "122"
+                          select data;
+
+            //foreach (var item in dataList)
+            //{
+            //    Console.WriteLine(item);
+            //}
             
         }
 

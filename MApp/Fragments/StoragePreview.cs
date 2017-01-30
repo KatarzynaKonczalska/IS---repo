@@ -407,7 +407,8 @@ namespace MApp.Fragments
             Button stockTaking = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
             stockTaking.Click += async (sender, e) =>
             {
-                var data = await Conn.GetData(GetTypes.GetSectorAssets, "1");
+                JsonValue data = null;
+                data = await Conn.GetData(GetTypes.GetSectorAssets, "1");
                 var nowy = new StockTaking();
                 var fm = FragmentManager.BeginTransaction();
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");

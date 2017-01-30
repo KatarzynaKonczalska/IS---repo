@@ -32,7 +32,7 @@ namespace MApp.Fragments
             Button saveTag = View.FindViewById<Button>(Resource.Id.button1_QuickCheckIn);
             saveTag.Click += async (sender, e) =>
             {
-                string dataToSend;
+                string dataToSend = null;
                 //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
                 // UNDONE: wys³anie JSON'a do bazy - z kas brac jsona do wyslania
                 buttonCheckIn(view);
@@ -46,8 +46,7 @@ namespace MApp.Fragments
                     EditText e3 = View.FindViewById<EditText>(Resource.Id.exitText3_QuickCheckIn);
                     EditText e4 = View.FindViewById<EditText>(Resource.Id.editText4_QuickCheckIn);
 
-                    dataToSend = "{ \"assetName\":" + e1.Text + "\"assetAmount\":" + 12 + ",\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\", 1]" + ",\"NFCTag\":" + e2.Text + ",\"assetDetails\":{\"NumerPartii\":" + e3.Text + ",\"Producent\":" + e4.Text + "}}";
-                    string response = await Conn.SendData(dataToSend);
+                    string response = await Conn.SendData(dataToSend, SendType.SendData, Activities.Content.id2);
                     
                 }
                 else
@@ -58,7 +57,6 @@ namespace MApp.Fragments
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
-
         }
 
 
@@ -72,15 +70,9 @@ namespace MApp.Fragments
             // DONE: generowanie id
             try
             {
-                //resp = await Conn.DeleteData(123);
-                //resp = await Conn.GetData(GetTypes.GetAll);
-                //string json = "{\"assetName\": \"Lech piwo 4pak\",\"assetAmount\": 301,\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\",1],\"NFCTag\": \"0001\",\"assetDetails\": {\"label\":\"value\"}}";
-                //resp = await Conn.SendData(json);
-                //var resp = await Conn.GetData(GetTypes.GetMagazine, "583ea7f9d6194c0c6f51fa70");
-                //Console.WriteLine(resp.ToString());
-                var resp = await Conn.GenerateId();
-                Activities.Content.id2 = resp;
-                temp.Text = resp;
+                var id = await Conn.SendData("{}", SendType.GetId);
+                Activities.Content.id2 = id;
+                temp.Text = id;
             }
             catch (Exception e)
             {
