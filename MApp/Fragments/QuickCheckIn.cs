@@ -52,7 +52,7 @@ namespace MApp.Fragments
                 }
                 else
                 {
-                    Toast.MakeText(Activity.ApplicationContext, "Zapis na serwer nie powiód³ siê!",ToastLength.Long);
+                    Toast.MakeText(Activity.ApplicationContext, "Zapis na serwer nie powiód³ siê!",ToastLength.Long).Show();
                 }
             };
 

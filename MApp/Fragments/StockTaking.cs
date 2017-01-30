@@ -32,14 +32,17 @@ namespace MApp.Fragments
             Console.WriteLine(Data.ToString());
 
             //na liste
-            //List<int> dataList = new List<int>();
-            //for (int i = 0; i < Data.Count-1; i++)
-            //{
-            //    var a = Data[i]["id"];
-            //    string b = a.ToString();
-            //    dataList.Add(int.Parse(b));
-            //}
-            //Console.WriteLine(dataList);
+            List<string> dataList = new List<string>();
+            for (int i = 0; i < Data.Count; i++)
+            {
+                var a = Data[i]["id"];
+                dataList.Add(a.ToString().Trim('"'));
+            }
+            foreach (var item in dataList)
+            {
+                Console.WriteLine(item);
+            }
+            
         }
 
         private void OnClick(object sender, EventArgs ea)
