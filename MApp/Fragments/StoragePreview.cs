@@ -313,44 +313,13 @@ namespace MApp.Fragments
             //odpalenie nastêpnego fragmentu
         }
 
-        //private JsonValue _OpenLocalJson(string name)
-        //{
-        //    using (var open = Activity.Assets.Open(name))
-        //    {
-        //        JsonValue file = JsonObject.Load(open);
-        //        return file;
-        //    }
-        //}
-
-        //private void _LoadValues(JsonValue plik, TextView pole)
-        //{
-        //    string d = "";
-        //    for (int i = 0; i < 2; i++)
-        //    {
-        //        JsonValue v2 = plik["" + i];
-        //        JsonValue v3 = v2["Produkty"];
-        //        for (int j = 1; j <= 6; j++)
-        //        {
-        //            d += v3["" + j]["Nazwa"].ToString();
-        //            d += ", ";
-        //        }
-        //    }
-        //    pole.Text = d;
-        //}
-
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-
-            //return base.OnCreateView(inflater, container, savedInstanceState);
             View view = inflater.Inflate(Resource.Layout.StoragePreview, container, false);
             return view;
         }
