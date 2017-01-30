@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using MApp.REST;
+using System.Json;
+using System.Net;
+using System.IO;
 
 namespace MApp.Fragments
 {
@@ -25,34 +28,56 @@ namespace MApp.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
+            int i = 0;
             Button saveTag = View.FindViewById<Button>(Resource.Id.button1_QuickCheckIn);
             saveTag.Click += async (sender, e) =>
             {
+                string dataToSend = null;
                 //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
                 // UNDONE: wys³anie JSON'a do bazy - z kas brac jsona do wyslania
                 buttonCheckIn(view);
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
                 temp.Visibility = ViewStates.Visible;
 
-                System.Json.JsonValue Data = null;
-                string response = await Conn.SendData(Data);
+                if(Activities.Content._tagWritten)
+                {
+                    EditText e1 = View.FindViewById<EditText>(Resource.Id.editText1_QuickCheckIn);
+                    EditText e2 = View.FindViewById<EditText>(Resource.Id.editText2_QuickCheckIn);
+                    EditText e3 = View.FindViewById<EditText>(Resource.Id.exitText3_QuickCheckIn);
+                    EditText e4 = View.FindViewById<EditText>(Resource.Id.editText4_QuickCheckIn);
+
+                    string response = await Conn.SendData(dataToSend, SendType.SendData, Activities.Content.id2);
+                    
+                }
+                else
+                {
+                    Toast.MakeText(Activity.ApplicationContext, "Zapis na serwer nie powiód³ siê!",ToastLength.Long).Show();
+                }
             };
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
             generate.Click += OnClick2;
         }
 
+
+
         private async void OnClick2(object sender, EventArgs ea)
         //rzeczy dziej¹ce siê po klikniêciu przycisku 'GENERUJ'; Legolas -> Kasia
         {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView5_QuickCheckIn);
+            TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
             temp.Text = "Generujê...";
 
             // DONE: generowanie id
-            Activities.Content.id2 = await Conn.GenerateId();
-            
-            //Random r = new Random();
-            //Activities.Content.id2 = r.Next().ToString();
+            try
+            {
+                var id = await Conn.SendData("{}", SendType.GetId);
+                Activities.Content.id2 = id;
+                temp.Text = id;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void buttonCheckIn(View v)
@@ -69,6 +94,7 @@ namespace MApp.Fragments
         {
             Conn = con;
         }
+
     }
     public interface CheckInInterface
     {

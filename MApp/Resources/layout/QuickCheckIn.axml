@@ -29,10 +29,10 @@
             android:layout_marginRight="25dp"
             android:textSize="15dp"
             android:textColor="#ff000000" />
-        <TextView
+        <EditText
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
-            android:id="@+id/textView3_QuickCheckIn"
+            android:id="@+id/editText1_QuickCheckIn"
             android:background="@drawable/quickcheckin_textback"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -55,11 +55,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout1_QuickCheckIn">
-            <TextView
+            <EditText
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:id="@+id/textView5_QuickCheckIn"
+                android:id="@+id/editText2_QuickCheckIn"
                 android:background="@drawable/quickcheckin_textback"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp" />
@@ -69,9 +69,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout2_QuickCheckIn"
-                android:layout_alignBottom="@+id/textView5_QuickCheckIn"
-                android:layout_alignRight="@+id/textView5_QuickCheckIn"
-                android:layout_alignTop="@+id/textView5_QuickCheckIn"
+                android:layout_alignBottom="@+id/editText2_QuickCheckIn"
+                android:layout_alignRight="@+id/editText2_QuickCheckIn"
+                android:layout_alignTop="@+id/editText2_QuickCheckIn"
                 android:background="#ff22a4fe"
                 android:layout_marginLeft="200dp">
                 <Button
@@ -100,11 +100,11 @@
             android:layout_marginRight="25dp"
             android:textSize="15dp"
             android:textColor="#ff000000" />
-        <TextView
+        <EditText
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView7_QuickCheckIn"
+            android:id="@+id/exitText3_QuickCheckIn"
             android:background="@drawable/quickcheckin_textback"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />
@@ -119,11 +119,11 @@
             android:layout_marginRight="25dp"
             android:textSize="15dp"
             android:textColor="#ff000000" />
-        <TextView
+        <EditText
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView9_QuickCheckIn"
+            android:id="@+id/editText4_QuickCheckIn"
             android:background="@drawable/quickcheckin_textback"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />

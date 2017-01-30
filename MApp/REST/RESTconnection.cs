@@ -2,8 +2,8 @@ using System;
 using System.Threading.Tasks;
 using System.Json;
 using System.IO;
-using System.Net.Http;
 using System.Text;
+using System.Net.Http;
 
 namespace MApp.REST
 {
@@ -11,6 +11,12 @@ namespace MApp.REST
     {
         GetAll, GetMagazine, GetAsset, GetSectorAssets
     }
+
+    public enum SendType
+    {
+        SendData, GetId
+    }
+
     public class RESTconnection
     {
         string ServerUrl, RESTUrl;
@@ -20,56 +26,64 @@ namespace MApp.REST
         {
             this.ServerUrl = ServerUrl;
             client = new HttpClient();
-            client.BaseAddress = new Uri(ServerUrl);
+            client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<JsonValue> GetData(GetTypes DownloadDataType, long id = 0)
+        public async Task<JsonValue> GetData(GetTypes DownloadDataType, string id = "")
         {
             // DONE: GetData
             switch (DownloadDataType)
             {
                 case GetTypes.GetAll:
                     {
-                        RESTUrl = "/api/magazine";
+                        //RESTUrl = "http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo";
+                        RESTUrl = "/api/magazine?format=json";
                     }
                     break;
                 case GetTypes.GetMagazine:
                     {
-                        RESTUrl = "/api/magazine[" + id + "]";
+                        RESTUrl = "/api/magazine/" + id;
                     }
                     break;
                 case GetTypes.GetAsset:
                     {
-                        RESTUrl = "/api/asset[" + id + "]";
+                        RESTUrl = "/api/asset/" + id;
                     }
                     break;
                 case GetTypes.GetSectorAssets:
                     {
-                        RESTUrl = "/api/asset/sector/[" + id + "]";
+                        RESTUrl = "/api/asset/sector/" + id;
                     }
                     break;
             }
 
-            using (HttpResponseMessage response = await client.GetAsync(RESTUrl))
+            using (HttpResponseMessage response = await client.GetAsync(ServerUrl + RESTUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    using (Stream stream = await response.Content.ReadAsStreamAsync())
-                    {
-                        JsonValue Data = await Task.Run(() => JsonObject.Load(stream));
-                        return Data;
-                    }
+                    string stream = await response.Content.ReadAsStringAsync();
+                    JsonValue data = JsonObject.Parse(stream);
+                    return data;
                 }
                 throw new Exception("Error witch connecting to server.");
             }
         }
 
-        public async Task<string> SendData(string Data)
+        public async Task<string> SendData(string Data, SendType type, string id = null)
         {
             // DONE: SendData
-            RESTUrl = "/api/asset/add";
+           
+            switch (type)
+            {
+                case SendType.GetId:
+                    RESTUrl = "/api/asset/add";
+                    break;
+                case SendType.SendData:
+                    RESTUrl = "/api/asset/" + id + "/update";
+                    break;
+            }
 
-            using (HttpResponseMessage response = await client.PostAsync(RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
+            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -84,30 +98,15 @@ namespace MApp.REST
         {
             // DONE: DeleteData
             
-            RESTUrl = "/api/asset/[" + id + "]/delete";
+            //RESTUrl = "/api/asset/[" + id + "]/delete";
+            RESTUrl = "/api/asset/nfc/123/delete";
 
-            using (HttpResponseMessage response = await client.DeleteAsync(RESTUrl))
+            using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
                     string message = await response.Content.ReadAsStringAsync();
                     return message;
-                }
-                throw new Exception("Error witch connecting to server.");
-            }
-        }
-
-        public async Task<string> GenerateId()
-        {
-            // TODO: Link do generowania id
-            RESTUrl = "";
-
-            using (HttpResponseMessage response = await client.GetAsync(RESTUrl))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    string GeneratedId = await response.Content.ReadAsStringAsync();
-                    return GeneratedId;
                 }
                 throw new Exception("Error witch connecting to server.");
             }

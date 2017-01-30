@@ -8,6 +8,9 @@ using Android.Support.V4.View;
 using Android.Nfc;
 using Android.Widget;
 using Android.Content;
+using System;
+using Android.Renderscripts;
+using Android;
 using Java.IO;
 using Android.Nfc.Tech;
 using Android.Util;
@@ -28,9 +31,15 @@ namespace MApp.Activities
         int backCount = 0;
         #endregion
 
+        #region REST
+        // TODO: Adres servera
+        RESTconnection REST = new RESTconnection("http://158.75.44.109:8000");
+        #endregion
+
         #region NFC Fields
         public static string id, id2;
         public static bool write = false;
+        public static bool _tagWritten;
         public const string ViewApeMimeType = "application/vnd.xamarin.nfcxample";
         public static readonly string NfcAppRecord = "xamarin.nfxample";
         public static readonly string Tag = "NfcXample";
@@ -38,11 +47,6 @@ namespace MApp.Activities
         public static bool _inClearMode = false;
         public static NfcAdapter _nfcAdapter;
         string hominidName;
-        #endregion
-
-        #region REST
-        // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("");
         #endregion
 
         #region Override
@@ -74,7 +78,7 @@ namespace MApp.Activities
 
             //load default home screen
             var ft = FragmentManager.BeginTransaction();
-            var QM = new QuickMenu();
+            var QM = new Fragments.QuickMenu();
             ft.Add(Resource.Id.HomeFrameLayout, QM, "quickmenu");
             ft.AddToBackStack(null);
             ft.Commit();
@@ -187,6 +191,7 @@ namespace MApp.Activities
                 }
 
                 ndef.WriteNdefMessage(ndefMessage);
+                //hehe
 
                 if (_inClearMode)
                 {
@@ -196,6 +201,7 @@ namespace MApp.Activities
                 else
                 {
                     Toast.MakeText(this, "Succesfully wrote tag.", ToastLength.Short).Show();
+                    _tagWritten = true;
                 }
                 return true;
             }
@@ -225,6 +231,7 @@ namespace MApp.Activities
                     else
                     {
                         Toast.MakeText(this, "Tag successfully written", ToastLength.Short);
+                        _tagWritten = true;
                     }
                     return true;
                 }
@@ -256,12 +263,14 @@ namespace MApp.Activities
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
-                    ft.Replace(Resource.Id.HomeFrameLayout, new StoragePreview(), "inwentaryzacja_menu");
+                    var sp = new Fragments.StoragePreview();
+                    ft.Replace(Resource.Id.HomeFrameLayout, sp, "inwentaryzacja_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
+                    sp.setConnection(REST);
                     break;
                 case (Resource.Id.nav_messages):
-                    var fragment2 = new QuickCheckIn();
+                    var fragment2 = new Fragments.QuickCheckIn();
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment2, "nfc_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
@@ -270,7 +279,7 @@ namespace MApp.Activities
                     fragment2.setConnection(REST);
                     break;
                 case (Resource.Id.nav_friends):
-                    var fragment = new QuickCheckOut();
+                    var fragment = new Fragments.QuickCheckOut();
                     ft.Replace(Resource.Id.HomeFrameLayout, fragment, "CheckOut");
                     ft.AddToBackStack(null);
                     ft.Commit();
