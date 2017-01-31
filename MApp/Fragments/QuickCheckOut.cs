@@ -9,7 +9,6 @@ namespace MApp.Fragments
     public class QuickCheckOut : Fragment
     {
         CheckOutInterface CoutInterface;
-        int passedInt;
         RESTconnection Conn;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -32,7 +31,7 @@ namespace MApp.Fragments
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
-                string response = await Conn.DeleteData(int.MaxValue); // przykladowe id
+                string response = await Conn.DeleteData(Activities.Content.id);
             };
         }
 

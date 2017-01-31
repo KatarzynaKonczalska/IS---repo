@@ -8,9 +8,6 @@ using Android.Support.V4.View;
 using Android.Nfc;
 using Android.Widget;
 using Android.Content;
-using System;
-using Android.Renderscripts;
-using Android;
 using Java.IO;
 using Android.Nfc.Tech;
 using Android.Util;
@@ -343,6 +340,12 @@ namespace MApp.Activities
                     }
                 }
             }
+        }
+
+        public override void OnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState)
+        {
+
+            base.OnSaveInstanceState(outState, outPersistentState);
         }
         #endregion
 
