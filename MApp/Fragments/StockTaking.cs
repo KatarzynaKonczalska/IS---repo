@@ -31,6 +31,15 @@ namespace MApp.Fragments
             showTag.Click += OnClick;
             Console.WriteLine(Data.ToString());
 
+            //czytanie NFC
+            if(Activities.Content.id.Length>0)
+            {
+                Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
+                //wpisaæ dodanie do listy
+                Activities.Content.id = "";
+            }
+
+
             //na liste
             List<string> dataList = new List<string>();
             for (int i = 0; i < Data.Count; i++)

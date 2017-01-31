@@ -21,9 +21,9 @@ using MApp.REST;
 namespace MApp.Activities
 {
     [Activity(Label = "Content", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    //[IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-    //    DataMimeType = ViewApeMimeType,
-    //    Categories = new[] { "android.intent.category.DEFAULT" })]
+    [IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
+        DataMimeType = ViewApeMimeType,
+        Categories = new[] { "android.intent.category.DEFAULT" })]
     public class Content : AppCompatActivity, CheckOutInterface, CheckInInterface
     {
         #region Fields
@@ -137,12 +137,13 @@ namespace MApp.Activities
                 //czytanie
                 if (ViewApeMimeType.Equals(intentType))
                 {
-                    //Toast.MakeText(this, "czyta", ToastLength.Short).Show();
+                    
                     var rawMessages = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
                     var msg = (NdefMessage)rawMessages[0];
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
+                    //Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
             }
             //zapisywanie
