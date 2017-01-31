@@ -188,7 +188,6 @@ namespace MApp.Activities
                 }
 
                 ndef.WriteNdefMessage(ndefMessage);
-                //hehe
 
                 if (_inClearMode)
                 {
@@ -313,7 +312,7 @@ namespace MApp.Activities
                     return base.OnOptionsItemSelected(item);
             }
         }
-
+        #endregion
         //to avoid direct app exit on backpreesed and to show fragment from stack
         public override void OnBackPressed()
         {
@@ -336,7 +335,6 @@ namespace MApp.Activities
                         }
                         Toast m = Toast.MakeText(this, "Aby wyjsc, ponownie nacisnij wstecz", ToastLength.Short);
                         m.Show();
-
                     }
                 }
             }
@@ -344,10 +342,9 @@ namespace MApp.Activities
 
         public override void OnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState)
         {
-
             base.OnSaveInstanceState(outState, outPersistentState);
         }
-        #endregion
+        
 
         #endregion
 
