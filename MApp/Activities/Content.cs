@@ -21,9 +21,9 @@ using MApp.REST;
 namespace MApp.Activities
 {
     [Activity(Label = "Content", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    //[IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-    //    DataMimeType = ViewApeMimeType,
-    //    Categories = new[] { "android.intent.category.DEFAULT" })]
+    [IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
+        DataMimeType = ViewApeMimeType,
+        Categories = new[] { "android.intent.category.DEFAULT" })]
     public class Content : AppCompatActivity, CheckOutInterface, CheckInInterface
     {
         #region Fields
@@ -45,7 +45,6 @@ namespace MApp.Activities
         public static readonly string Tag = "NfcXample";
         public static bool _inWriteMode = false;
         public static bool _inClearMode = false;
-        public static bool Clear = false;
         public static NfcAdapter _nfcAdapter;
         string hominidName;
         #endregion
@@ -146,58 +145,12 @@ namespace MApp.Activities
                     id = hominidName;
                 }
             }
-            if(Clear)
-            {
-                var tag = intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
-
-                if (tag == null)
-                {
-                    return;
-                }
-
-                var payload = Encoding.ASCII.GetBytes("");
-                var mimeBytes = Encoding.ASCII.GetBytes(ViewApeMimeType);
-                var apeRecord = new NdefRecord(NdefRecord.TnfMimeMedia, mimeBytes, new byte[0], payload);
-                var ndefMessage = new NdefMessage(new[] { apeRecord });
-
-                if (!TryAndWriteToTag(tag, ndefMessage))
-                {
-                    TryAndFormatTagWithMessage(tag, ndefMessage);
-                }
-            }
-            Clear = false;
             //zapisywanie
         }
 
         public void EnableWriteMode()
         {
             _inWriteMode = true;
-            var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);
-            var filters = new[] { tagDetected };
-
-            var intent = new Intent(this, GetType()).AddFlags(ActivityFlags.SingleTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
-
-            if (_nfcAdapter == null)
-            {
-                var alert = new Android.App.AlertDialog.Builder(this).Create();
-                alert.SetMessage("NFC is not supported on this device.");
-                alert.SetTitle("NFC Unavailable");
-                alert.SetButton("OK", delegate
-                {
-
-                    Toast.MakeText(this, "NFC is not supported on this device", ToastLength.Short);
-                });
-                alert.Show();
-            }
-            else
-                _nfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
-        }
-
-
-        public void EnableClearMode()
-        {
-            //Clear = true;
             var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);
             var filters = new[] { tagDetected };
 
@@ -240,7 +193,7 @@ namespace MApp.Activities
                 ndef.WriteNdefMessage(ndefMessage);
                 //hehe
 
-                if (_inClearMode || Clear)
+                if (_inClearMode)
                 {
                     Toast.MakeText(this, "Succesfully cleared tag.", ToastLength.Short).Show();
                     _inClearMode = false;
@@ -271,7 +224,7 @@ namespace MApp.Activities
                     format.Connect();
                     format.Format(ndefMessage);
                     //DisplayMessage("Tag successfully written.");
-                    if (_inClearMode || Clear)
+                    if (_inClearMode)
                     {
                         Toast.MakeText(this, "Tag successfully cleared", ToastLength.Short);
                     }
@@ -402,7 +355,8 @@ namespace MApp.Activities
 
         public void buttonCheckOut(View v)
         {
-            EnableClearMode();
+            _inClearMode = true;
+            EnableWriteMode();
         }
     }
 }
