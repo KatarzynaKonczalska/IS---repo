@@ -407,8 +407,8 @@ namespace MApp.Activities
         {
             EnableClearMode();
             //zwrocic na id wartosc
-            _inClearMode = true;
-            EnableWriteMode();
+            //_inClearMode = true;
+            //EnableWriteMode();
         }
     }
 }
