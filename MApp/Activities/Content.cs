@@ -194,7 +194,7 @@ namespace MApp.Activities
 
         public void EnableClearMode()
         {
-            Clear = true;
+            //Clear = true;
             var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);
             var filters = new[] { tagDetected };
 
@@ -406,9 +406,6 @@ namespace MApp.Activities
         public void buttonCheckOut(View v)
         {
             EnableClearMode();
-            //zwrocic na id wartosc
-            //_inClearMode = true;
-            //EnableWriteMode();
         }
     }
 }
