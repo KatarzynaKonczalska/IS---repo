@@ -360,7 +360,7 @@ namespace MApp.Fragments
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
                 fm.AddToBackStack(null);
                 fm.Commit();
-                //nowy.setData(data);
+                nowy.setData(data);
             };
 
             RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(gl.LayoutParameters);
