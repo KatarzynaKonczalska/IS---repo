@@ -11,6 +11,7 @@ namespace MApp.REST
     {
         GetAll, GetMagazine, GetAsset, GetSectorAssets
     }
+
     public class RESTconnection
     {
         string ServerUrl, RESTUrl;
@@ -30,7 +31,6 @@ namespace MApp.REST
             {
                 case GetTypes.GetAll:
                     {
-                        //RESTUrl = "http://api.geonames.org/findNearByWeatherJSON?lat=47.7&lng=-122.5&username=demo";
                         RESTUrl = "/api/magazine?format=json";
                     }
                     break;
@@ -63,12 +63,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> SendData(string Data)
+        public async Task<string> SendData(string Data, string id)
         {
-            // DONE: SendData
-            RESTUrl = "/api/asset/add";
+            // TODO: Poprawic
+            RESTUrl = "/api/asset/" + id + "/update";
 
-            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
+            using (HttpResponseMessage response = await client.PutAsync(ServerUrl + RESTUrl, new StringContent(Data, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -79,12 +79,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> DeleteData(long id)
+        public async Task<string> DeleteData(string id)
         {
             // DONE: DeleteData
-            
-            //RESTUrl = "/api/asset/[" + id + "]/delete";
-            RESTUrl = "/api/asset/nfc/123/delete";
+
+            RESTUrl = "/api/asset/" + id + "/delete";
+            //RESTUrl = "/api/asset/nfc/123/delete";
 
             using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
             {
@@ -97,17 +97,18 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> GenerateId()
+        public async Task<string> GenerateId(string ServerTrigger = "{}")
         {
-            // TODO: Link do generowania id
-            RESTUrl = "";
+            RESTUrl = "/api/asset/add";
 
-            using (HttpResponseMessage response = await client.GetAsync(ServerUrl + RESTUrl))
+            using (HttpResponseMessage response = await client.PostAsync(ServerUrl + RESTUrl, new StringContent(ServerTrigger, Encoding.UTF8, "application/json")))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    string GeneratedId = await response.Content.ReadAsStringAsync();
-                    return GeneratedId;
+                    string message = await response.Content.ReadAsStringAsync();
+                    JsonValue id = JsonObject.Parse(message);
+                    message = id["id"].ToString().Trim('"');
+                    return message;
                 }
                 throw new Exception("Error witch connecting to server.");
             }

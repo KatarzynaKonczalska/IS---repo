@@ -13,9 +13,19 @@ namespace MApp.Fragments
 {
     public class StockTaking : Fragment
     {
+        class JsonData
+        {
+            public JsonData(string id, string nazwa)
+            {
+                ID = id; Nazwa = nazwa;
+            }
+            public string ID { get; private set; }
+            public string Nazwa { get; private set; }
+        }
+
         JsonValue Data;
         public static string id_tag = "";
-        List<string> tagi;
+        List<string> tagi = new List<string>();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,6 +35,8 @@ namespace MApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.StockTaking, container, false);
+            Activities.Content.tags.Clear();
+            Activities.Content._stockTaking = true;
             return view;
         }
         public override void OnViewCreated(View view, Bundle savedInstanceState)
@@ -34,8 +46,8 @@ namespace MApp.Fragments
             showTag.Click += OnClick;
             //Console.WriteLine(Data.ToString());
 
-            
-            Activities.Content._stockTaking = true;
+
+            //Activities.Content._stockTaking = true;
 
 
             //czytanie NFC
@@ -48,6 +60,22 @@ namespace MApp.Fragments
 
 
             //na liste
+            List<JsonData> dataList = new List<JsonData>();
+            for (int i = 0; i < Data.Count; i++)
+            {
+                var a = Data[i];
+                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
+            }
+
+            var element = from data in dataList
+                          where data.ID == "122"
+                          select data;
+
+            //foreach (var item in dataList)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            
             //List<string> dataList = new List<string>();
             //for (int i = 0; i < Data.Count; i++)
             //{
@@ -79,11 +107,13 @@ namespace MApp.Fragments
         public override void OnPause()
         {
             base.OnPause();
-            Activities.Content._stockTaking = false;
+            //Activities.Content._stockTaking = false;
         }
         public void setData(JsonValue d)
         {
             Data = d;
         }
+
     }
+
 }
