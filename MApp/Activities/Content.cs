@@ -159,7 +159,11 @@ namespace MApp.Activities
                     id = hominidName;
                     if (_stockTaking)
                     {
-                        tags.Add(id);
+                        if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
+                        {
+                            StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
+                            a.addTag(id);
+                        }
                     }
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
@@ -277,6 +281,7 @@ namespace MApp.Activities
             base.OnResume();
             _nfcAdapter.EnableForegroundDispatch(this, mPendingIntent, null, null);
         }
+        #endregion
 
         #region MENU METHODS
         //  akcje na klikniecie w element menu

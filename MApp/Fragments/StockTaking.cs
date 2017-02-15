@@ -114,6 +114,10 @@ namespace MApp.Fragments
             Data = d;
         }
 
+        public void addTag(string Tag)
+        {
+            tagi.Add(Tag);
+        }
     }
 
 }
