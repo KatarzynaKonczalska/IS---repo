@@ -61,15 +61,15 @@ namespace MApp.Fragments
 
             //na liste
             List<JsonData> dataList = new List<JsonData>();
-            for (int i = 0; i < Data.Count; i++)
-            {
-                var a = Data[i];
-                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
-            }
+            //for (int i = 0; i < Data.Count; i++)
+            //{
+            //    var a = Data[i];
+            //    dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
+            //}
 
-            var element = from data in dataList
-                          where data.ID == "122"
-                          select data;
+            //var element = from data in dataList
+            //              where data.ID == "122"
+            //              select data;
 
             //foreach (var item in dataList)
             //{
@@ -94,7 +94,8 @@ namespace MApp.Fragments
         private void OnClick(object sender, EventArgs ea)
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-            temp.Text = tags.ElementAt(tags.Count - 1) + " / " + "Null";
+            //temp.Text = Activities.Content.tags.ElementAt(Activities.Content.tags.Count - 1) + " / " + "Null";
+
             Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
         }
 
