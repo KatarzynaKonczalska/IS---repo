@@ -14,7 +14,7 @@ namespace MApp.Fragments
     {
         JsonValue Data;
         public static string id_tag = "";
-        List<string> tagi;
+        List<string> tagi = new List<string>();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,6 +24,8 @@ namespace MApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.StockTaking, container, false);
+            Activities.Content.tags.Clear();
+            Activities.Content._stockTaking = true;
             return view;
         }
         public override void OnViewCreated(View view, Bundle savedInstanceState)
@@ -33,8 +35,8 @@ namespace MApp.Fragments
             showTag.Click += OnClick;
             //Console.WriteLine(Data.ToString());
 
-            
-            Activities.Content._stockTaking = true;
+
+            //Activities.Content._stockTaking = true;
 
 
             //czytanie NFC
@@ -78,11 +80,13 @@ namespace MApp.Fragments
         public override void OnPause()
         {
             base.OnPause();
-            Activities.Content._stockTaking = false;
+            //Activities.Content._stockTaking = false;
         }
         public void setData(JsonValue d)
         {
             Data = d;
         }
+
     }
+
 }
