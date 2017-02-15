@@ -26,9 +26,19 @@ namespace MApp.Fragments
         JsonValue Data;
         public static string id_tag = "";
         List<string> tagi = new List<string>();
+        List<JsonData> dataList = new List<JsonData>();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
+            Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            showTag.Click += OnClick;
+            showTag.Activated = false;
+            for (int i = 0; i < Data.Count; i++)
+            {
+                var a = Data[i];
+                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
+            }
+            showTag.Activated = true;
             base.OnCreate(savedInstanceState);
         }
 
@@ -42,51 +52,10 @@ namespace MApp.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
-            showTag.Click += OnClick;
-            //Console.WriteLine(Data.ToString());
 
-
-            //Activities.Content._stockTaking = true;
-
-
-            //czytanie NFC
-            //if(Activities.Content.id.Length>0)
-            //{
-            //    Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
-            //    //wpisaæ dodanie do listy
-            //    Activities.Content.id = "";
-            //}
-
-
-                                                    //List<JsonData> dataList = new List<JsonData>();
-                                                    //for (int i = 0; i < Data.Count; i++)
-                                                    //{
-                                                    //    var a = Data[i];
-                                                    //    dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
-                                                    //}
-
-                                                    //var element = from data in dataList
-                                                    //              where data.ID == "122"
-                                                    //              select data;
-
-            //foreach (var item in dataList)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            
-            //List<string> dataList = new List<string>();
-            //for (int i = 0; i < Data.Count; i++)
-            //{
-            //    var a = Data[i]["id"];
-            //    dataList.Add(a.ToString().Trim('"'));
-            //}
-            //foreach (var item in dataList)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-
+            var element = from data in dataList
+                          where data.ID == "122"
+                          select data;
 
         }
 
@@ -115,8 +84,12 @@ namespace MApp.Fragments
 
         public void addTag(string Tag)
         {
-            tagi.Add(Tag);
-            Toast.MakeText(Activity, Tag, ToastLength.Short).Show();
+            if (!(tagi.Find(a => a == Tag).Length > 0))
+                tagi.Add(Tag);
+
+            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            temp.Text = tagi.Count + " / " + dataList.Count;
+            //Toast.MakeText(Activity, Tag, ToastLength.Short).Show();
         }
     }
 
