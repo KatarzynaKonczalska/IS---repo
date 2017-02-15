@@ -47,7 +47,7 @@ namespace MApp.Activities
         public static bool _inWriteMode = false;
         public static bool _inClearMode = false;
         public static bool _stockTaking = false;
-        public static List<string> tags;
+        public List<string> tags = new List<string>();
         public static NfcAdapter _nfcAdapter;
         PendingIntent mPendingIntent;
         string hominidName;
@@ -160,6 +160,10 @@ namespace MApp.Activities
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
+                    //if (_stockTaking)
+                    //{
+                    //    tags.Add(id);
+                    //}
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
             }

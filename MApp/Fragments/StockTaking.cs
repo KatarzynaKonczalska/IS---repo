@@ -32,8 +32,9 @@ namespace MApp.Fragments
             Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
             showTag.Click += OnClick;
             //Console.WriteLine(Data.ToString());
-            
 
+            
+            Activities.Content._stockTaking = true;
 
 
             //czytanie NFC
