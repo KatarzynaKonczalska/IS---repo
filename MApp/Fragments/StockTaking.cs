@@ -13,6 +13,8 @@ namespace MApp.Fragments
     public class StockTaking : Fragment
     {
         JsonValue Data;
+        public static string id_tag = "";
+        List<string> tagi;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,35 +31,53 @@ namespace MApp.Fragments
             base.OnViewCreated(view, savedInstanceState);
             Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
             showTag.Click += OnClick;
-            Console.WriteLine(Data.ToString());
+            //Console.WriteLine(Data.ToString());
+            
+
+
 
             //czytanie NFC
-            if(Activities.Content.id.Length>0)
-            {
-                Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
-                //wpisaæ dodanie do listy
-                Activities.Content.id = "";
-            }
+            //if(Activities.Content.id.Length>0)
+            //{
+            //    Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
+            //    //wpisaæ dodanie do listy
+            //    Activities.Content.id = "";
+            //}
 
 
             //na liste
-            List<string> dataList = new List<string>();
-            for (int i = 0; i < Data.Count; i++)
-            {
-                var a = Data[i]["id"];
-                dataList.Add(a.ToString().Trim('"'));
-            }
-            foreach (var item in dataList)
-            {
-                Console.WriteLine(item);
-            }
-            
+            //List<string> dataList = new List<string>();
+            //for (int i = 0; i < Data.Count; i++)
+            //{
+            //    var a = Data[i]["id"];
+            //    dataList.Add(a.ToString().Trim('"'));
+            //}
+            //foreach (var item in dataList)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
         }
 
         private void OnClick(object sender, EventArgs ea)
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
             temp.Visibility = ViewStates.Visible;
+            Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            Activities.Content._stockTaking = false;
+        }
+
+        public override void OnPause()
+        {
+            base.OnPause();
+            Activities.Content._stockTaking = false;
         }
         public void setData(JsonValue d)
         {

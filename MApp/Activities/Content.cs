@@ -17,13 +17,14 @@ using Android.Util;
 using System.Text;
 using MApp.Fragments;
 using MApp.REST;
+using System.Collections.Generic;
 
 namespace MApp.Activities
 {
     [Activity(Label = "Content", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    [IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-        DataMimeType = ViewApeMimeType,
-        Categories = new[] { "android.intent.category.DEFAULT" })]
+    //[IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
+    //    DataMimeType = ViewApeMimeType,
+    //    Categories = new[] { "android.intent.category.DEFAULT" })]
     public class Content : AppCompatActivity, CheckOutInterface, CheckInInterface
     {
         #region Fields
@@ -37,7 +38,7 @@ namespace MApp.Activities
         #endregion
 
         #region NFC Fields
-        public static string id, id2;
+        public static string id, id2, id_inw = "";
         public static bool write = false;
         public static bool _tagWritten;
         public const string ViewApeMimeType = "application/vnd.xamarin.nfcxample";
@@ -45,7 +46,10 @@ namespace MApp.Activities
         public static readonly string Tag = "NfcXample";
         public static bool _inWriteMode = false;
         public static bool _inClearMode = false;
+        public static bool _stockTaking = false;
+        public static List<string> tags;
         public static NfcAdapter _nfcAdapter;
+        PendingIntent mPendingIntent;
         string hominidName;
         #endregion
 
@@ -83,6 +87,8 @@ namespace MApp.Activities
             ft.AddToBackStack(null);
             ft.Commit();
 
+            mPendingIntent = PendingIntent.GetActivity(this, 0, new Intent(this,
+                    GetType()).AddFlags(ActivityFlags.SingleTop), 0);
             handlingIntent(this.Intent);
         }
 
@@ -106,6 +112,16 @@ namespace MApp.Activities
 
                 if (_inClearMode == true)
                 {
+                    var intentType = intent.Type;
+                    if (ViewApeMimeType.Equals(intentType))
+                    {
+                        var rawMessages = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+                        var msg = (NdefMessage)rawMessages[0];
+                        var hominidRecord = msg.GetRecords()[0];
+                        hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
+                        id = hominidName;
+
+                    }
                     var payload = Encoding.ASCII.GetBytes("");
                     var mimeBytes = Encoding.ASCII.GetBytes(ViewApeMimeType);
                     var apeRecord = new NdefRecord(NdefRecord.TnfMimeMedia, mimeBytes, new byte[0], payload);
@@ -115,6 +131,7 @@ namespace MApp.Activities
                     {
                         TryAndFormatTagWithMessage(tag, ndefMessage);
                     }
+
                 }
                 else
                 {
@@ -143,9 +160,9 @@ namespace MApp.Activities
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
+                    Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
             }
-            //zapisywanie
         }
 
         public void EnableWriteMode()
@@ -255,6 +272,12 @@ namespace MApp.Activities
                 _nfcAdapter.DisableForegroundDispatch(this);
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _nfcAdapter.EnableForegroundDispatch(this, mPendingIntent, null, null);
+        }
+
         #region MENU METHODS
         //  akcje na klikniecie w element menu
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -317,6 +340,18 @@ namespace MApp.Activities
             }
         }
 
+        public static void Inwentaryzacja(Intent intent)
+        {
+            var intentType = intent.Type;
+            if (ViewApeMimeType.Equals(intentType))
+            {
+                var rawMessages = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+                var msg = (NdefMessage)rawMessages[0];
+                var hominidRecord = msg.GetRecords()[0];
+                id_inw = Encoding.ASCII.GetString(hominidRecord.GetPayload());
+            }
+        }
+
         //to avoid direct app exit on backpreesed and to show fragment from stack
         public override void OnBackPressed()
         {
@@ -358,5 +393,6 @@ namespace MApp.Activities
             _inClearMode = true;
             EnableWriteMode();
         }
+
     }
 }

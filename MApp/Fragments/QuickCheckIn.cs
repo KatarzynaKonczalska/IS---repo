@@ -78,7 +78,9 @@ namespace MApp.Fragments
                 //resp = await Conn.SendData(json);
                 //var resp = await Conn.GetData(GetTypes.GetMagazine, "583ea7f9d6194c0c6f51fa70");
                 //Console.WriteLine(resp.ToString());
-                var resp = await Conn.GenerateId();
+
+                //var resp = await Conn.GenerateId();
+                var resp = "123212";
                 Activities.Content.id2 = resp;
                 temp.Text = resp;
             }
