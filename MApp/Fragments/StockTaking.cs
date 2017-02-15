@@ -14,7 +14,7 @@ namespace MApp.Fragments
     {
         JsonValue Data;
         public static string id_tag = "";
-        List<string> tagi;
+        List<string> tagi = new List<string>();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,7 +33,7 @@ namespace MApp.Fragments
             showTag.Click += OnClick;
             //Console.WriteLine(Data.ToString());
 
-            
+
             Activities.Content._stockTaking = true;
 
 
@@ -84,5 +84,7 @@ namespace MApp.Fragments
         {
             Data = d;
         }
+
     }
+
 }
