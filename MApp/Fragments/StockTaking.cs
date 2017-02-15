@@ -93,8 +93,8 @@ namespace MApp.Fragments
 
         private void OnClick(object sender, EventArgs ea)
         {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
-            temp.Visibility = ViewStates.Visible;
+            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            temp.Text = tags.ElementAt(tags.Count - 1) + " / " + "Null";
             Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
         }
 

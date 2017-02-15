@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="#ffff">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -45,7 +46,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp" />
-         <Button
+        <Button
             android:text="Pokaż Brakujące"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,16 +55,5 @@
             android:backgroundTint="#ff22a4fe"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp" />
-        <TextView
-            android:text="Przyłóż TAG"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4_StockTaking"
-            android:textColor="#ff000000"
-            android:textSize="15dp"
-            android:gravity="center"
-            android:layout_marginBottom="150dp"
-            android:visibility="invisible" />
     </LinearLayout>
 </ScrollView>
