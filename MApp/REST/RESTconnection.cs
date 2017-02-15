@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Json;
+using System.IO;
 using System.Text;
 using System.Net.Http;
 
@@ -78,12 +79,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> DeleteData(string id)
+        public async Task<string> DeleteData(long id)
         {
             // DONE: DeleteData
 
-            RESTUrl = "/api/asset/" + id + "/delete";
-            //RESTUrl = "/api/asset/nfc/123/delete";
+            //RESTUrl = "/api/asset/" + id + "/delete";
+            RESTUrl = "/api/asset/nfc/123/delete";
 
             using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
             {

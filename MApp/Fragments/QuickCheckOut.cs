@@ -9,6 +9,7 @@ namespace MApp.Fragments
     public class QuickCheckOut : Fragment
     {
         CheckOutInterface CoutInterface;
+        int passedInt;
         RESTconnection Conn;
 
         public override void OnCreate(Bundle savedInstanceState)

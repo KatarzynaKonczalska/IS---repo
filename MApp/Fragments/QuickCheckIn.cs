@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using MApp.REST;
+using System.Json;
+using System.Net;
+using System.IO;
 
 namespace MApp.Fragments
 {
@@ -25,25 +28,26 @@ namespace MApp.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
+            int i = 0;
             Button saveTag = View.FindViewById<Button>(Resource.Id.button1_QuickCheckIn);
             saveTag.Click += async (sender, e) =>
             {
                 string dataToSend;
                 //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
                 // UNDONE: wys³anie JSON'a do bazy - z kas brac jsona do wyslania
-
+                buttonCheckIn(view);
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
                 temp.Visibility = ViewStates.Visible;
+
                 //if (Activities.Content._tagWritten)
                 //{
-                EditText e1 = View.FindViewById<EditText>(Resource.Id.editText1_QuickCheckIn);
-                EditText e2 = View.FindViewById<EditText>(Resource.Id.editText2_QuickCheckIn);
-                EditText e3 = View.FindViewById<EditText>(Resource.Id.exitText3_QuickCheckIn);
-                EditText e4 = View.FindViewById<EditText>(Resource.Id.editText4_QuickCheckIn);
+                    EditText e1 = View.FindViewById<EditText>(Resource.Id.editText1_QuickCheckIn);
+                    EditText e2 = View.FindViewById<EditText>(Resource.Id.editText2_QuickCheckIn);
+                    EditText e3 = View.FindViewById<EditText>(Resource.Id.exitText3_QuickCheckIn);
+                    EditText e4 = View.FindViewById<EditText>(Resource.Id.editText4_QuickCheckIn);
 
-                dataToSend = "{ \"assetName\":\"" + e1.Text + "\",\"assetAmount\":" + 12 + ",\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\", 1]" + ",\"assetDetails\":{\"NumerPartii\":\"" + e3.Text + "\",\"Producent\":\"" + e4.Text + "\"}}";
-                string response = await Conn.SendData(dataToSend, Activities.Content.id2);
-                buttonCheckIn(view);
+                    dataToSend = "{ \"assetName\":\"" + e1.Text + "\",\"assetAmount\":" + 12 + ",\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\", 1]" + ",\"assetDetails\":{\"NumerPartii\":\"" + e3.Text + "\",\"Producent\":\"" + e4.Text + "\"}}";
+                    string response = await Conn.SendData(dataToSend, Activities.Content.id2);
                 //}
                 //else
                 //{
