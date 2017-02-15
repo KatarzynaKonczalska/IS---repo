@@ -8,9 +8,6 @@ using Android.Support.V4.View;
 using Android.Nfc;
 using Android.Widget;
 using Android.Content;
-using System;
-using Android.Renderscripts;
-using Android;
 using Java.IO;
 using Android.Nfc.Tech;
 using Android.Util;
@@ -33,7 +30,7 @@ namespace MApp.Activities
 
         #region REST
         // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("http://158.75.45.208:8000");
+        RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
         #endregion
 
         #region NFC Fields

@@ -79,12 +79,12 @@ namespace MApp.REST
             }
         }
 
-        public async Task<string> DeleteData(long id)
+        public async Task<string> DeleteData(string id)
         {
             // DONE: DeleteData
 
-            //RESTUrl = "/api/asset/" + id + "/delete";
-            RESTUrl = "/api/asset/nfc/123/delete";
+            RESTUrl = "/api/asset/" + id + "/delete";
+            //RESTUrl = "/api/asset/nfc/123/delete";
 
             using (HttpResponseMessage response = await client.DeleteAsync(ServerUrl + RESTUrl))
             {
