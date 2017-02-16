@@ -82,7 +82,7 @@ namespace MApp.Fragments
 
         public void addTag(string Tag)
         {
-            if (!(tagi.Find(a => a == Tag).Length > 0))
+            if (tagi.Find(a => a == Tag).Length > 0)
                 tagi.Add(Tag);
 
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
