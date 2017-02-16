@@ -89,7 +89,14 @@ namespace MApp.Fragments
                 tagi.Add(Tag);
 
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            Button but = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
             temp.Text = tagi.Count + " / " + dataList.Count;
+            if(dataList.Count==tagi.Count)
+            {
+                but.Visibility = ViewStates.Gone;
+                temp.Text = "Zakoñczono";
+                tagi.Clear();
+            }
             //Toast.MakeText(Activity, Tag, ToastLength.Short).Show();
         }
     }
