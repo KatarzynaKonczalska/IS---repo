@@ -58,13 +58,6 @@ namespace MApp.Fragments
             pokazRoznice.Click += PokazRoznice;
         }
 
-        private void OnClick(object sender, EventArgs ea)
-        {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-
-            Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
-        }
-
         private void PokazRoznice(object sender, EventArgs ea)
         {
             string tmp = "";

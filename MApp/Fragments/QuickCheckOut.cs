@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -19,6 +20,7 @@ namespace MApp.Fragments
                 id = value;
                 Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
                 usunTag.Enabled = true;
+                usunTag.SetBackgroundColor(Color.Rgb(34, 164, 254));
             }
         }
 
@@ -37,6 +39,7 @@ namespace MApp.Fragments
             base.OnViewCreated(view, savedInstanceState);
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
             usunTag.Enabled = false;
+            usunTag.SetBackgroundColor(Color.Gray);
             
 
             usunTag.Click += async (sender, e) =>
@@ -49,6 +52,7 @@ namespace MApp.Fragments
                 Toast.MakeText(this.Activity, Activities.Content.id,ToastLength.Short).Show();
                 //Activities.Content.id = "";
                 usunTag.Enabled = false;
+                usunTag.SetBackgroundColor(Color.Gray);
             }; 
         }
 

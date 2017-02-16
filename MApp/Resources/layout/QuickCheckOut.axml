@@ -30,8 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button1_Checkout"
-        android:backgroundTint="#ff22a4fe"
         android:textColor="#ffff"
         android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp" />
+        android:layout_marginLeft="25dp"
+        android:background="#22A4FE" />
 </LinearLayout>
