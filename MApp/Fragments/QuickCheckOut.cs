@@ -26,18 +26,18 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
-            usunTag.Click += (sender, e) =>
+            usunTag.Click += async (sender, e) =>
             {
                 // DONE: ¿¹danie do bazy o usuniêcie tagu
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
-                //string response = await Conn.DeleteData(int.MaxValue); // przykladowe id
-                Toast.MakeText(this.Activity, Activities.Content.id,ToastLength.Short).Show();
+                string response = await Conn.DeleteData(Activities.Content.id); // przykladowe id
+                Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
                 TextView view1 = View.FindViewById<TextView>(Resource.Id.textView_3Checkout); //text view do id
                 view1.Text = Activities.Content.id;
-                //Activities.Content.id = "";
-            }; 
+                Activities.Content.id = "";
+            };
         }
 
         public void buttonCheckOut(View v)

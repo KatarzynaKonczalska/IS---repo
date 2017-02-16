@@ -15,6 +15,7 @@ using System.Text;
 using MApp.Fragments;
 using MApp.REST;
 using System.Collections.Generic;
+using System;
 
 namespace MApp.Activities
 {
@@ -157,10 +158,17 @@ namespace MApp.Activities
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
-                    if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
+                    try
                     {
-                        StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
-                        a.addTag(id);
+                        if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
+                        {
+                            StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
+                            a.addTag(id);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
                     }
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
