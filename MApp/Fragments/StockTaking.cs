@@ -30,23 +30,21 @@ namespace MApp.Fragments
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-            Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
-            showTag.Click += OnClick;
-            showTag.Activated = false;
+            //Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            //showTag.Click += OnClick;
+            //showTag.Activated = false;
             for (int i = 0; i < Data.Count; i++)
             {
                 var a = Data[i];
                 dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
             }
-            showTag.Activated = true;
+            //showTag.Activated = true;
             base.OnCreate(savedInstanceState);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.StockTaking, container, false);
-            Activities.Content.tags.Clear();
-            Activities.Content._stockTaking = true;
             return view;
         }
         public override void OnViewCreated(View view, Bundle savedInstanceState)
@@ -70,7 +68,6 @@ namespace MApp.Fragments
         public override void OnDestroy()
         {
             base.OnDestroy();
-            Activities.Content._stockTaking = false;
         }
 
         public override void OnPause()

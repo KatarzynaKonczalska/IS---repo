@@ -33,7 +33,7 @@ namespace MApp.Activities
         // TODO: Adres servera
         //RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
         RESTconnection REST = new RESTconnection("https://lit-citadel-99664.herokuapp.com");
-        
+
         #endregion
 
         #region NFC Fields
@@ -45,8 +45,6 @@ namespace MApp.Activities
         public static readonly string Tag = "NfcXample";
         public static bool _inWriteMode = false;
         public static bool _inClearMode = false;
-        public static bool _stockTaking = false;
-        public static List<string> tags = new List<string>();
         public static NfcAdapter _nfcAdapter;
         PendingIntent mPendingIntent;
         string hominidName;
@@ -159,13 +157,10 @@ namespace MApp.Activities
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
-                    if (_stockTaking)
+                    if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
                     {
-                        if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
-                        {
-                            StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
-                            a.addTag(id);
-                        }
+                        StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
+                        a.addTag(id);
                     }
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
@@ -390,7 +385,7 @@ namespace MApp.Activities
         {
             base.OnSaveInstanceState(outState, outPersistentState);
         }
-        
+
 
         #endregion
 
