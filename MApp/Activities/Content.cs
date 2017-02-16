@@ -165,11 +165,14 @@ namespace MApp.Activities
                             StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
                             a.addTag(id);
                         }
+                        if (FragmentManager.FindFragmentByTag("CheckOut").IsVisible)
+                        {
+                            QuickCheckOut o = (QuickCheckOut)FragmentManager.FindFragmentByTag("CheckOut");
+                            o.ID = id;
+                        }
                     }
-                    catch (Exception e)
-                    {
+                    catch (Exception e) { }
 
-                    }
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
             }
