@@ -352,15 +352,15 @@ namespace MApp.Fragments
             TextView t = View.FindViewById<TextView>(Resource.Id.StorageLocalization);
 
             Button stockTaking = View.FindViewById<Button>(Resource.Id.button1_StoragePreview);
-            stockTaking.Click += (sender,e) => //+= async (sender, e) =>
+            stockTaking.Click += async (sender, e) =>
             {
-                //var data = await Conn.GetData(GetTypes.GetSectorAssets, "1");
+                var data = await Conn.GetData(GetTypes.GetSectorAssets, "1");
                 var nowy = new StockTaking();
                 var fm = FragmentManager.BeginTransaction();
                 fm.Replace(Resource.Id.HomeFrameLayout, nowy, "inwentaryzacja");
                 fm.AddToBackStack(null);
                 fm.Commit();
-                //nowy.setData(data);
+                nowy.setData(data);
             };
 
             RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(gl.LayoutParameters);

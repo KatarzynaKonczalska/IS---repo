@@ -11,6 +11,16 @@ namespace MApp.Fragments
         CheckOutInterface CoutInterface;
         int passedInt;
         RESTconnection Conn;
+        string id;
+        public string ID
+        {
+            set
+            {
+                id = value;
+                Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
+                usunTag.Enabled = true;
+            }
+        }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,17 +36,21 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
-            usunTag.Click += (sender, e) =>
+            usunTag.Enabled = false;
+            
+
+            usunTag.Click += async (sender, e) =>
             {
                 // DONE: ¿¹danie do bazy o usuniêcie tagu
                 TextView temp = View.FindViewById<TextView>(Resource.Id.textView2_Checkout);
                 temp.Visibility = ViewStates.Visible;
                 buttonCheckOut(view);
-                //string response = await Conn.DeleteData(int.MaxValue); // przykladowe id
+                string response = await Conn.DeleteData(id);
                 Toast.MakeText(this.Activity, Activities.Content.id,ToastLength.Short).Show();
                 TextView view1 = View.FindViewById<TextView>(Resource.Id.textView_3Checkout); //text view do id
                 view1.Text = Activities.Content.id;
                 //Activities.Content.id = "";
+                usunTag.Enabled = false;
             }; 
         }
 

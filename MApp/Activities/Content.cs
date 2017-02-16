@@ -15,6 +15,7 @@ using System.Text;
 using MApp.Fragments;
 using MApp.REST;
 using System.Collections.Generic;
+using System;
 
 namespace MApp.Activities
 {
@@ -31,7 +32,9 @@ namespace MApp.Activities
 
         #region REST
         // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
+        //RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
+        RESTconnection REST = new RESTconnection("https://lit-citadel-99664.herokuapp.com");
+
         #endregion
 
         #region NFC Fields
@@ -43,8 +46,6 @@ namespace MApp.Activities
         public static readonly string Tag = "NfcXample";
         public static bool _inWriteMode = false;
         public static bool _inClearMode = false;
-        public static bool _stockTaking = false;
-        public static List<string> tags = new List<string>();
         public static NfcAdapter _nfcAdapter;
         PendingIntent mPendingIntent;
         string hominidName;
@@ -157,10 +158,28 @@ namespace MApp.Activities
                     var hominidRecord = msg.GetRecords()[0];
                     hominidName = Encoding.ASCII.GetString(hominidRecord.GetPayload());
                     id = hominidName;
-                    if (_stockTaking)
+                    try
                     {
-                        tags.Add(id);
+                        if (FragmentManager.FindFragmentByTag("inwentaryzacja").IsVisible)
+                        {
+                            StockTaking a = (StockTaking)FragmentManager.FindFragmentByTag("inwentaryzacja");
+                            a.addTag(id);
+                        }
+                        
                     }
+                    catch (Exception e)
+                    {
+                        try
+                        {
+                            if (FragmentManager.FindFragmentByTag("CheckOut").IsVisible)
+                            {
+                                QuickCheckOut o = (QuickCheckOut)FragmentManager.FindFragmentByTag("CheckOut");
+                                o.ID = id;
+                            }
+                        }
+                        catch (Exception ex) { }
+                    }
+
                     Toast.MakeText(this, id, ToastLength.Short).Show();
                 }
             }
@@ -277,6 +296,7 @@ namespace MApp.Activities
             base.OnResume();
             _nfcAdapter.EnableForegroundDispatch(this, mPendingIntent, null, null);
         }
+        #endregion
 
         #region MENU METHODS
         //  akcje na klikniecie w element menu
@@ -383,7 +403,7 @@ namespace MApp.Activities
         {
             base.OnSaveInstanceState(outState, outPersistentState);
         }
-        
+
 
         #endregion
 

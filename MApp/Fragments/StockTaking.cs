@@ -26,82 +26,50 @@ namespace MApp.Fragments
         JsonValue Data;
         public static string id_tag = "";
         List<string> tagi = new List<string>();
+        List<JsonData> dataList = new List<JsonData>();
 
         public override void OnCreate(Bundle savedInstanceState)
         {
+            //Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            //showTag.Click += OnClick;
+            //showTag.Activated = false;
+            for (int i = 0; i < Data.Count; i++)
+            {
+                var a = Data[i];
+                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
+            }
+            //showTag.Activated = true;
+
             base.OnCreate(savedInstanceState);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.StockTaking, container, false);
-            Activities.Content.tags.Clear();
-            Activities.Content._stockTaking = true;
             return view;
         }
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            Button showTag = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
-            showTag.Click += OnClick;
-            //Console.WriteLine(Data.ToString());
-
-
-            //Activities.Content._stockTaking = true;
-
-
-            //czytanie NFC
-            //if(Activities.Content.id.Length>0)
-            //{
-            //    Toast.MakeText(this.Activity, Activities.Content.id, ToastLength.Short).Show();
-            //    //wpisaæ dodanie do listy
-            //    Activities.Content.id = "";
-            //}
-
-
-            //na liste
-            List<JsonData> dataList = new List<JsonData>();
-            for (int i = 0; i < Data.Count; i++)
-            {
-                var a = Data[i];
-                dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
-            }
+            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            temp.Text = "0 / " + dataList.Count;
 
             var element = from data in dataList
                           where data.ID == "122"
                           select data;
-
-            //foreach (var item in dataList)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            
-            //List<string> dataList = new List<string>();
-            //for (int i = 0; i < Data.Count; i++)
-            //{
-            //    var a = Data[i]["id"];
-            //    dataList.Add(a.ToString().Trim('"'));
-            //}
-            //foreach (var item in dataList)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-
 
         }
 
         private void OnClick(object sender, EventArgs ea)
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-            temp.Text = tags.ElementAt(tags.Count - 1) + " / " + "Null";
+
             Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
         }
 
         public override void OnDestroy()
         {
             base.OnDestroy();
-            Activities.Content._stockTaking = false;
         }
 
         public override void OnPause()
@@ -114,6 +82,23 @@ namespace MApp.Fragments
             Data = d;
         }
 
+        public void addTag(string Tag)
+        {
+            //if (tagi.Find(a => a == Tag).Length == 0)
+            if (tagi.Find(a => a == Tag) == null)
+                tagi.Add(Tag);
+
+            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            Button but = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            temp.Text = tagi.Count + " / " + dataList.Count;
+            if(dataList.Count==tagi.Count)
+            {
+                but.Visibility = ViewStates.Gone;
+                temp.Text = "Zakoñczono";
+                tagi.Clear();
+            }
+            //Toast.MakeText(Activity, Tag, ToastLength.Short).Show();
+        }
     }
 
 }
