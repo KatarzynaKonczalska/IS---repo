@@ -31,7 +31,9 @@ namespace MApp.Activities
 
         #region REST
         // TODO: Adres servera
-        RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
+        //RESTconnection REST = new RESTconnection("http://192.168.1.164:8000");
+        RESTconnection REST = new RESTconnection("https://lit-citadel-99664.herokuapp.com");
+        
         #endregion
 
         #region NFC Fields
