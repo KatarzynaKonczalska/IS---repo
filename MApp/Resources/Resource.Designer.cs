@@ -2044,8 +2044,8 @@ namespace MApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0700b9
-			public const int Background_QM = 2131165369;
+			// aapt resource value: 0x7f0700b8
+			public const int Background_QM = 2131165368;
 			
 			// aapt resource value: 0x7f070094
 			public const int HomeFrameLayout = 2131165332;
@@ -2149,8 +2149,8 @@ namespace MApp
 			// aapt resource value: 0x7f0700b2
 			public const int button1_QuickCheckIn = 2131165362;
 			
-			// aapt resource value: 0x7f0700be
-			public const int button1_StockTaking = 2131165374;
+			// aapt resource value: 0x7f0700bd
+			public const int button1_StockTaking = 2131165373;
 			
 			// aapt resource value: 0x7f0700c9
 			public const int button1_StoragePreview = 2131165385;
@@ -2332,8 +2332,8 @@ namespace MApp
 			// aapt resource value: 0x7f070078
 			public const int imageButton9 = 2131165304;
 			
-			// aapt resource value: 0x7f0700ba
-			public const int imageView1 = 2131165370;
+			// aapt resource value: 0x7f0700b9
+			public const int imageView1 = 2131165369;
 			
 			// aapt resource value: 0x7f0700a1
 			public const int info = 2131165345;
@@ -2584,8 +2584,8 @@ namespace MApp
 			// aapt resource value: 0x7f0700a5
 			public const int textView1_QuickCheckIn = 2131165349;
 			
-			// aapt resource value: 0x7f0700bb
-			public const int textView1_StockTaking = 2131165371;
+			// aapt resource value: 0x7f0700ba
+			public const int textView1_StockTaking = 2131165370;
 			
 			// aapt resource value: 0x7f070080
 			public const int textView2 = 2131165312;
@@ -2596,20 +2596,23 @@ namespace MApp
 			// aapt resource value: 0x7f0700a6
 			public const int textView2_QuickCheckIn = 2131165350;
 			
-			// aapt resource value: 0x7f0700bc
-			public const int textView2_StockTaking = 2131165372;
+			// aapt resource value: 0x7f0700bb
+			public const int textView2_StockTaking = 2131165371;
 			
 			// aapt resource value: 0x7f070082
 			public const int textView3 = 2131165314;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int textView3_StockTaking = 2131165373;
+			// aapt resource value: 0x7f0700bc
+			public const int textView3_StockTaking = 2131165372;
 			
 			// aapt resource value: 0x7f070083
 			public const int textView4 = 2131165315;
 			
 			// aapt resource value: 0x7f0700a8
 			public const int textView4_QuickCheckIn = 2131165352;
+			
+			// aapt resource value: 0x7f0700be
+			public const int textView4_StockTaking = 2131165374;
 			
 			// aapt resource value: 0x7f0700ad
 			public const int textView5_QuickCheckIn = 2131165357;
@@ -2622,9 +2625,6 @@ namespace MApp
 			
 			// aapt resource value: 0x7f0700c6
 			public const int textView_1SP = 2131165382;
-			
-			// aapt resource value: 0x7f0700b8
-			public const int textView_3Checkout = 2131165368;
 			
 			// aapt resource value: 0x7f0700c7
 			public const int textView_Fill = 2131165383;

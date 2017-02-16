@@ -276,18 +276,19 @@ namespace MApp.Fragments
             List<TextView> categoryList = new List<TextView>();
             // _LoadValues(_OpenLocalJson(@"jsonLocal2.json"), textNew);// pobierz kategorie - nazwy
 
-            for (int j = 0; j < 20; j++)
+            //for (int j = 0; j < 20; j++)
             {
                 TextView textView = new TextView(Activity.ApplicationContext);
                 textView.Clickable = true;
                 textView.Click += ItemClick;
                 categoryList.Add(textView);
             }
-
+            
             int k = 0;
             foreach (TextView item in categoryList)
             {
-                item.Text = "Kategoria_" + (categoryList.Count * (sectorList.Count-1) + k);
+                //item.Text = "Kategoria_" + (categoryList.Count * (sectorList.Count-1) + k);
+                item.Text = "";
                 item.SetWidth(rl.RootView.MeasuredWidth);
                 item.SetHeight(ConvertDpToPixels(25));
                 item.TranslationY = k * ConvertDpToPixels(25);
@@ -297,7 +298,7 @@ namespace MApp.Fragments
                 newRL.AddView(item);
                 k++;
             }
-
+            
             int height = ConvertDpToPixels(25 * categoryList.Count);
             RLparams.Height = height + ConvertDpToPixels(12);
             newRL.Visibility = ViewStates.Gone;

@@ -55,5 +55,14 @@
             android:backgroundTint="#ff22a4fe"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4_StockTaking"
+            android:textColor="#ff000000"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginTop="45dp" />
     </LinearLayout>
 </ScrollView>

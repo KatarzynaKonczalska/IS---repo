@@ -47,8 +47,6 @@ namespace MApp.Fragments
                 buttonCheckOut(view);
                 string response = await Conn.DeleteData(id);
                 Toast.MakeText(this.Activity, Activities.Content.id,ToastLength.Short).Show();
-                TextView view1 = View.FindViewById<TextView>(Resource.Id.textView_3Checkout); //text view do id
-                view1.Text = Activities.Content.id;
                 //Activities.Content.id = "";
                 usunTag.Enabled = false;
             }; 

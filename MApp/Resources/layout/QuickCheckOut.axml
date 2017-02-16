@@ -34,10 +34,4 @@
         android:textColor="#ffff"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp" />
-    <TextView
-        android:text="Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_3Checkout"
-        android:layout_marginTop="25dp" />
 </LinearLayout>
