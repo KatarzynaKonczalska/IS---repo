@@ -67,13 +67,16 @@ namespace MApp.Fragments
 
         private void PokazRoznice(object sender, EventArgs ea)
         {
+            string tmp = "";
             foreach (var item in dataList)
             {
                 if (tagi.Find(a => a == item.ID) == null)
                 {
-
+                    tmp += item.ID + " - " + item.Nazwa + "\n";
                 }
             }
+            TextView field = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
+            field.Text = tmp;
         }
 
         public override void OnDestroy()
