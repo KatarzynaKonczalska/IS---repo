@@ -18,7 +18,7 @@ namespace MApp.Fragments
             {
                 id = value;
                 Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
-                usunTag.Activated = true;
+                usunTag.Enabled = true;
             }
         }
 
@@ -36,7 +36,8 @@ namespace MApp.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
             Button usunTag = View.FindViewById<Button>(Resource.Id.button1_Checkout);
-            usunTag.Activated = false;
+            usunTag.Enabled = false;
+            
 
             usunTag.Click += async (sender, e) =>
             {
@@ -49,7 +50,7 @@ namespace MApp.Fragments
                 TextView view1 = View.FindViewById<TextView>(Resource.Id.textView_3Checkout); //text view do id
                 view1.Text = Activities.Content.id;
                 //Activities.Content.id = "";
-                usunTag.Activated = false;
+                usunTag.Enabled = false;
             }; 
         }
 
