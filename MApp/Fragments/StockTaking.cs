@@ -39,6 +39,7 @@ namespace MApp.Fragments
                 dataList.Add(new JsonData(a["id"].ToString().Trim('"'), a["assetName"].ToString().Trim('"')));
             }
             //showTag.Activated = true;
+
             base.OnCreate(savedInstanceState);
         }
 
@@ -50,6 +51,8 @@ namespace MApp.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
+            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            temp.Text = "0 / " + dataList.Count;
 
             var element = from data in dataList
                           where data.ID == "122"
@@ -60,7 +63,6 @@ namespace MApp.Fragments
         private void OnClick(object sender, EventArgs ea)
         {
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-            //temp.Text = Activities.Content.tags.ElementAt(Activities.Content.tags.Count - 1) + " / " + "Null";
 
             Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
         }
