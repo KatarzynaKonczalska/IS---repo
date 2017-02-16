@@ -54,10 +54,8 @@ namespace MApp.Fragments
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
             temp.Text = "0 / " + dataList.Count;
 
-            var element = from data in dataList
-                          where data.ID == "122"
-                          select data;
-
+            Button pokazRoznice = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            pokazRoznice.Click += PokazRoznice;
         }
 
         private void OnClick(object sender, EventArgs ea)
@@ -65,6 +63,17 @@ namespace MApp.Fragments
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
 
             Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
+        }
+
+        private void PokazRoznice(object sender, EventArgs ea)
+        {
+            foreach (var item in dataList)
+            {
+                if (tagi.Find(a => a == item.ID) == null)
+                {
+
+                }
+            }
         }
 
         public override void OnDestroy()
@@ -85,7 +94,7 @@ namespace MApp.Fragments
         public void addTag(string Tag)
         {
             //if (tagi.Find(a => a == Tag).Length == 0)
-            if (tagi.Find(a => a == Tag) == null)
+            if (dataList.Find(a => a.ID == Tag) != null)
                 tagi.Add(Tag);
 
             TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
