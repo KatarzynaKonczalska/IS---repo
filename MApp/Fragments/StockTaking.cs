@@ -3,11 +3,8 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using MApp.REST;
 using System.Json;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MApp.Fragments
 {
@@ -27,6 +24,8 @@ namespace MApp.Fragments
         public static string id_tag = "";
         List<string> tagi = new List<string>();
         List<JsonData> dataList = new List<JsonData>();
+        TextView Gtemp, Gtemp2;
+        Button Gbut;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,6 +55,10 @@ namespace MApp.Fragments
 
             Button pokazRoznice = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
             pokazRoznice.Click += PokazRoznice;
+
+            Gtemp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
+            Gbut = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
+            Gtemp2 = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
         }
 
         private void OnClick(object sender, EventArgs ea)
@@ -72,11 +75,10 @@ namespace MApp.Fragments
             {
                 if (tagi.Find(a => a == item.ID) == null)
                 {
-                    tmp += item.ID + " - " + item.Nazwa + "\n";
+                    tmp += item.Nazwa + "\n";
                 }
             }
-            TextView field = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
-            field.Text = tmp;
+            Gtemp2.Text = tmp;
         }
 
         public override void OnDestroy()
@@ -100,13 +102,12 @@ namespace MApp.Fragments
             if (dataList.Find(a => a.ID == Tag) != null)
                 tagi.Add(Tag);
 
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-            Button but = View.FindViewById<Button>(Resource.Id.button1_StockTaking);
-            temp.Text = tagi.Count + " / " + dataList.Count;
+            Gtemp.Text = tagi.Count + " / " + dataList.Count;
             if(dataList.Count==tagi.Count)
             {
-                but.Visibility = ViewStates.Gone;
-                temp.Text = "Zakoñczono";
+                Gbut.Visibility = ViewStates.Gone;
+                Gtemp2.Visibility = ViewStates.Gone;
+                Gtemp.Text = "Zakoñczono";
                 tagi.Clear();
             }
             //Toast.MakeText(Activity, Tag, ToastLength.Short).Show();
