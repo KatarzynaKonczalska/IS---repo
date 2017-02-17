@@ -50,6 +50,7 @@ namespace MApp.Fragments
                 {
                     TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
                     temp.Text = "";
+                    e1.Text = "";
                 }
                 //}
                 //else
