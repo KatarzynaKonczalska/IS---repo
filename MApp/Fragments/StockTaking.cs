@@ -61,13 +61,6 @@ namespace MApp.Fragments
             Gtemp2 = View.FindViewById<TextView>(Resource.Id.textView4_StockTaking);
         }
 
-        private void OnClick(object sender, EventArgs ea)
-        {
-            TextView temp = View.FindViewById<TextView>(Resource.Id.textView3_StockTaking);
-
-            Toast.MakeText(this.Activity, Activities.Content.id_inw, ToastLength.Short).Show();
-        }
-
         private void PokazRoznice(object sender, EventArgs ea)
         {
             string tmp = "";

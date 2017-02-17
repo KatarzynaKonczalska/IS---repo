@@ -36,8 +36,6 @@ namespace MApp.Fragments
                 //rzeczy dziej¹ce siê po klikniêciu 'ZAPISZ'
                 // UNDONE: wys³anie JSON'a do bazy - z kas brac jsona do wyslania
                 buttonCheckIn(view);
-                TextView temp = View.FindViewById<TextView>(Resource.Id.textView10_QuickCheckIn);
-                temp.Visibility = ViewStates.Visible;
 
                 //if (Activities.Content._tagWritten)
                 //{
@@ -53,6 +51,8 @@ namespace MApp.Fragments
                 //{
                 //    Toast.MakeText(Activity.ApplicationContext, "Zapis na serwer nie powiód³ siê!", ToastLength.Long);
                 //}
+                //Po udanym zapisaniu usuwanie numeru id wygenerowanego poprzednio
+                e2.Text = "";
             };
 
             Button generate = View.FindViewById<Button>(Resource.Id.button2_QuickCheckIn);
