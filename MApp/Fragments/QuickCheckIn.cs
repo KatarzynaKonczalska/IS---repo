@@ -46,6 +46,11 @@ namespace MApp.Fragments
 
                     dataToSend = "{ \"assetName\":\"" + e1.Text + "\",\"assetAmount\":" + 12 + ",\"assetLocation\": [\"583ea7f9d6194c0c6f51fa70\", 1]" + ",\"assetDetails\":{\"NumerPartii\":\"" + e3.Text + "\",\"Producent\":\"" + e4.Text + "\"}}";
                     string response = await Conn.SendData(dataToSend, Activities.Content.id2);
+                if (!String.IsNullOrEmpty(response))
+                {
+                    TextView temp = View.FindViewById<TextView>(Resource.Id.editText2_QuickCheckIn);
+                    temp.Text = "";
+                }
                 //}
                 //else
                 //{
