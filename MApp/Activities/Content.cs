@@ -330,6 +330,12 @@ namespace MApp.Activities
                     fragment.setInterface(this);
                     fragment.setConnection(REST);
                     break;
+                case (Resource.Id.nav_SearchApartment):
+                    var fragment3 = new Fragments.DatabaseOverview();
+                    ft.Replace(Resource.Id.HomeFrameLayout, fragment3, "DatabaseOverview");
+                    ft.AddToBackStack(null);
+                    ft.Commit();
+                    break;
             }
             // Close drawer
             drawerLayout.CloseDrawers();

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Text"
+        android:id="@+id/textView"
+        android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:textSize="@dimen/abc_action_bar_content_inset_material"
+        android:maxWidth="100dp"
+        android:minWidth="190dp"
+        android:layout_marginTop="5dp"
+        android:drawableRight="@color/abc_search_url_text_selected"
+        android:fadingEdge="horizontal"
+        android:layerType="software"
+        android:layout_marginBottom="5dp" />
+    <TextView
+        android:text="Text"
+        android:id="@+id/textView111"
+        android:textSize="@dimen/abc_action_bar_content_inset_material"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="5dp" />
+</GridLayout>
