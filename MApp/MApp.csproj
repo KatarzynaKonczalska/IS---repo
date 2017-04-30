@@ -109,6 +109,7 @@
     <Compile Include="Fragments\QuickMenu.cs" />
     <Compile Include="Fragments\StockTaking.cs" />
     <Compile Include="Fragments\StoragePreview.cs" />
+    <Compile Include="Fragments\StoragePreview_2.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REST\RESTconnection.cs" />
@@ -154,6 +155,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Raw2.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StoragePreview_2.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -307,11 +307,11 @@ namespace MApp.Activities
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
-                    var sp = new Fragments.StoragePreview();
+                    var sp = new Fragments.StoragePreview_2();
                     ft.Replace(Resource.Id.HomeFrameLayout, sp, "inwentaryzacja_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
-                    sp.setConnection(REST);
+                    //sp.setConnection(REST);
                     break;
                 case (Resource.Id.nav_messages):
                     var fragment2 = new Fragments.QuickCheckIn();
