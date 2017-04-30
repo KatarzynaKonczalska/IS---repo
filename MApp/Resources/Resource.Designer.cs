@@ -2065,8 +2065,8 @@ namespace MApp
 			// aapt resource value: 0x7f070097
 			public const int action0 = 2131165335;
 			
-			// aapt resource value: 0x7f0700ce
-			public const int action_attach = 2131165390;
+			// aapt resource value: 0x7f0700d2
+			public const int action_attach = 2131165394;
 			
 			// aapt resource value: 0x7f07005e
 			public const int action_bar = 2131165278;
@@ -2110,8 +2110,8 @@ namespace MApp
 			// aapt resource value: 0x7f07003f
 			public const int action_mode_close_button = 2131165247;
 			
-			// aapt resource value: 0x7f0700cd
-			public const int action_refresh = 2131165389;
+			// aapt resource value: 0x7f0700d1
+			public const int action_refresh = 2131165393;
 			
 			// aapt resource value: 0x7f070040
 			public const int activity_chooser_view_content = 2131165248;
@@ -2287,6 +2287,9 @@ namespace MApp
 			// aapt resource value: 0x7f07000f
 			public const int homeAsUp = 2131165199;
 			
+			// aapt resource value: 0x7f0700ce
+			public const int horizontalScrollView1 = 2131165390;
+			
 			// aapt resource value: 0x7f070045
 			public const int icon = 2131165253;
 			
@@ -2365,8 +2368,14 @@ namespace MApp
 			// aapt resource value: 0x7f0700b5
 			public const int linearLayout1_Checkout = 2131165365;
 			
+			// aapt resource value: 0x7f0700cf
+			public const int linearLayout2 = 2131165391;
+			
 			// aapt resource value: 0x7f0700ac
 			public const int linearLayout2_QuickCheckIn = 2131165356;
+			
+			// aapt resource value: 0x7f0700d0
+			public const int linearLayout3 = 2131165392;
 			
 			// aapt resource value: 0x7f0700c3
 			public const int linearLayout_1SP = 2131165379;
@@ -2392,17 +2401,17 @@ namespace MApp
 			// aapt resource value: 0x7f070016
 			public const int multiply = 2131165206;
 			
-			// aapt resource value: 0x7f0700d2
-			public const int nav_SearchApartment = 2131165394;
+			// aapt resource value: 0x7f0700d6
+			public const int nav_SearchApartment = 2131165398;
 			
-			// aapt resource value: 0x7f0700d1
-			public const int nav_friends = 2131165393;
+			// aapt resource value: 0x7f0700d5
+			public const int nav_friends = 2131165397;
 			
-			// aapt resource value: 0x7f0700cf
-			public const int nav_home = 2131165391;
+			// aapt resource value: 0x7f0700d3
+			public const int nav_home = 2131165395;
 			
-			// aapt resource value: 0x7f0700d0
-			public const int nav_messages = 2131165392;
+			// aapt resource value: 0x7f0700d4
+			public const int nav_messages = 2131165396;
 			
 			// aapt resource value: 0x7f070096
 			public const int nav_view = 2131165334;
@@ -2475,6 +2484,9 @@ namespace MApp
 			
 			// aapt resource value: 0x7f07004f
 			public const int scrollView = 2131165263;
+			
+			// aapt resource value: 0x7f0700cd
+			public const int scrollView1_StoragePreview2 = 2131165389;
 			
 			// aapt resource value: 0x7f0700c2
 			public const int scrollViewSP = 2131165378;
@@ -2917,7 +2929,10 @@ namespace MApp
 			public const int StoragePreview = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int support_simple_spinner_dropdown_item = 2130968640;
+			public const int StoragePreview_2 = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int support_simple_spinner_dropdown_item = 2130968641;
 			
 			static Layout()
 			{
