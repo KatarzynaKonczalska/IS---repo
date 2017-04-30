@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -103,6 +103,7 @@
     <Compile Include="Activities\Content.cs" />
     <Compile Include="Activities\LogIn.cs" />
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Fragments\DatabaseOverview.cs" />
     <Compile Include="Fragments\QuickCheckIn.cs" />
     <Compile Include="Fragments\QuickCheckOut.cs" />
     <Compile Include="Fragments\QuickMenu.cs" />
@@ -144,6 +145,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\QuickMenu.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Raw.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DatabaseOverview.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Raw2.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

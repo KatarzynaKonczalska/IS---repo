@@ -208,6 +208,7 @@ namespace MApp.Activities
             }
             else
                 _nfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
+            
         }
 
         private bool TryAndWriteToTag(Tag tag, NdefMessage ndefMessage)
