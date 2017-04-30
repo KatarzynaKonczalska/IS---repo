@@ -307,7 +307,7 @@ namespace MApp.Activities
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
-                    var sp = new Fragments.StoragePreview_2();
+                    var sp = new Fragments.StoragePreview();
                     ft.Replace(Resource.Id.HomeFrameLayout, sp, "inwentaryzacja_menu");
                     ft.AddToBackStack(null);
                     ft.Commit();
